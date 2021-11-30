@@ -72,6 +72,8 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: dist
+          path: dist
+        
       - name: Upload the release
         uses: svenstaro/upload-release-action@v2
         with:
