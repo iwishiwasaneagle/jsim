@@ -1,6 +1,16 @@
 jsim package
 ============
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   jsim.Agent
+   jsim.Environment
+   jsim.Simulation
+
 Submodules
 ----------
 

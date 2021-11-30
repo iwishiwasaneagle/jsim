@@ -1,5 +1,9 @@
 # jsim
 
+[![CI](https://github.com/iwishiwasaneagle/jsim/actions/workflows/CI.yml/badge.svg)](https://github.com/iwishiwasaneagle/jsim/actions/workflows/CI.yml)
+[![CD](https://github.com/iwishiwasaneagle/jsim/actions/workflows/CD.yml/badge.svg)](https://github.com/iwishiwasaneagle/jsim/actions/workflows/CD.yml)
+
+
 Simulation environment for SAR
 
 ## Description
