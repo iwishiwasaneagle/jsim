@@ -1,6 +1,7 @@
 name: CD
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - "v*.*.*"
@@ -20,10 +21,9 @@ jobs:
         uses: orhun/git-cliff-action@v1
         id: git-cliff
         with:
-          config: cliff.toml
           args: -vv --latest --strip header
         env:
-          OUTPUT: CHANGES.md
+          OUTPUT: CHANGELOG.md
       - name: Set the release body
         id: release
         shell: bash
@@ -56,7 +56,7 @@ jobs:
           
   publish-gh-page:
     name: Publish to Github Pages
-    needs: publish-github
+    needs: generate-changelog
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
