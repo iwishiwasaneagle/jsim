@@ -56,7 +56,7 @@ jobs:
           
   publish-gh-page:
     name: Publish to Github Pages
-    needs: publish-github
+    needs: generate-changelog
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
