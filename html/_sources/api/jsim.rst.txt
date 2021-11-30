@@ -1,0 +1,21 @@
+jsim package
+============
+
+Submodules
+----------
+
+jsim.skeleton module
+--------------------
+
+.. automodule:: jsim.skeleton
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: jsim
+   :members:
+   :undoc-members:
+   :show-inheritance:
