@@ -3,7 +3,7 @@
 # takes the tag as an argument (e.g. v0.1.0)
 if [ -n "$1" ]; then
 	git-cliff --tag "$1" > CHANGELOG.md
-	git add -A && git commit -m "chore(release): prepare for $1"
+	git commit CHANGELOG.md -m "chore(release): prepare for $1"
 	git show
 	# generate a changelog for the tag message
 	export TEMPLATE="\
