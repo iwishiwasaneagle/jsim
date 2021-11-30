@@ -15,22 +15,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        
+        with:
+          fetch-depth: 0
       - name: Generate a changelog
         uses: orhun/git-cliff-action@v1
         id: git-cliff
         with:
-          config: cliff.toml
           args: -vv --latest --strip header
         env:
-          OUTPUT: CHANGES.md
-          
+          OUTPUT: CHANGELOG.md
       - name: Set the release body
         id: release
         shell: bash
         run: |
-          ls
-          r=$(cat CHANGES.md }})
+          r=$(cat ${{ steps.git-cliff.outputs.changelog }})
           r="$(printf "$r" | tail -n +3)"
           r="${r//'%'/'%25'}"
           r="${r//$'\n'/'%0A'}"
