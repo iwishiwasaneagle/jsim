@@ -18,6 +18,7 @@ if [ -n "$1" ]; then
 	# https://keyserver.ubuntu.com/pks/lookup?search=0x4A92FA17B6619297&op=vindex
 	git tag -s -a "$1" -m "Release $1" -m "$changelog"
 	git tag -v "$1"
+    git push "$1"
 else
 	echo "warn: please provide a tag"
 fi
