@@ -1,6 +1,7 @@
 name: CD
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - "v*.*.*"
@@ -24,10 +25,12 @@ jobs:
           args: -vv --latest --strip header
         env:
           OUTPUT: CHANGES.md
+          
       - name: Set the release body
         id: release
         shell: bash
         run: |
+          ls
           r=$(cat ${{ steps.git-cliff.outputs.changelog }})
           r="$(printf "$r" | tail -n +3)"
           r="${r//'%'/'%25'}"
