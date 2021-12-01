@@ -1,11 +1,15 @@
+"""
+The agent entity moves around and interacts with the environment. From the environment,
+it receives sensations and selects actions. The agent may or may not learn, may or may
+not build a model of the environment (i.e SLAM), etc.
+"""
+
 from jsim.Meta import Action, Sensation
 
 
 class Agent:
     """
     Agent class to be placed within the simulation.
-
-    Heavily inspired by http://incompleteideas.net/RLinterface/RLI-Cplusplus.html#Agent
     """
 
     def __init__(self) -> None:
