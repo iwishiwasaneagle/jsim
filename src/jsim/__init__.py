@@ -1,3 +1,11 @@
+"""
+Overarching module for `jsim`.
+
+Note:
+    The core architecture is heavily inspired
+    by http://incompleteideas.net/RLinterface/RLI-Cplusplus.html
+"""
+
 import sys
 
 if sys.version_info[:2] >= (3, 8):
