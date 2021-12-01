@@ -2,7 +2,7 @@
 
 # takes the tag as an argument (e.g. v0.1.0)
 if [ -n "$1" ]; then
-    export PRE_COMMIT_ALLOW_NO_CONFIG=1
+    pre-commit uninstall
     git-cliff --tag "$1" > CHANGELOG.md
     git commit CHANGELOG.md -m "chore(release): prepare for $1"
     git show
@@ -20,7 +20,7 @@ if [ -n "$1" ]; then
     git tag -s -a "$1" -m "Release $1" -m "$changelog"
     git tag -v "$1"
     git push origin "$1"
-    export PRE_COMMIT_ALLOW_NO_CONFIG=0
+    pre-commit install
 else
     echo "warn: please provide a tag"
 fi
