@@ -43,7 +43,8 @@ class Agent(ABC):
     def step(
         self, ps: Sensation, pa: Action, pnext_s: Sensation, reward: float
     ) -> Action:
-        """Must be provided by the user and will be called at each step of the
+        """
+        Must be provided by the user and will be called at each step of the
         simulation. This is the place where the learning should take place.
 
         :param ps: Sensation used to decide on previous step
@@ -55,6 +56,19 @@ class Agent(ABC):
         :param reward: The reward gained from the previous action
         :type reward: float
         :return: The next action to be taken
+        :rtype: Action
+        """
+        pass
+
+    @abstractmethod
+    def policy(self, pnext_s: Sensation) -> Action:
+        """
+        Must be provided by the user. This encodes the agents response to a given
+        sensation.
+
+        :param pnext_s: The currently sensed Sensation (i.e. the current state)
+        :type pnext_s: Sensation
+        :return: The action to take given the sensation
         :rtype: Action
         """
         pass
