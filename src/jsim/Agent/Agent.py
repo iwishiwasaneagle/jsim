@@ -4,14 +4,17 @@ it receives sensations and selects actions. The agent may or may not learn, may 
 not build a model of the environment (i.e SLAM), etc.
 """
 
+from abc import ABC, abstractmethod
+
 from jsim.Meta import Action, Sensation
 
 
-class Agent:
+class Agent(ABC):
     """
     Agent class to be placed within the simulation.
     """
 
+    @abstractmethod
     def __init__(self) -> None:
         """
         Extended by the user for their specialised use case. Called once at the
@@ -20,8 +23,9 @@ class Agent:
         The agent can consult with the environment or simulation as needed. Both are
         guaranteed to be existant and inited by the time the Agent is created.
         """
-        raise NotImplementedError
+        pass
 
+    @abstractmethod
     def start_trial(self, ps: Sensation) -> Action:
         """
         Extended by the user for their specialised use case. Called at the beginning
@@ -33,8 +37,9 @@ class Agent:
         :return: The first action of the agent in the new trial, in response to `ps`
         :rtype: Action
         """
-        raise NotImplementedError
+        pass
 
+    @abstractmethod
     def step(
         self, ps: Sensation, pa: Action, pnext_s: Sensation, reward: float
     ) -> Action:
@@ -52,4 +57,4 @@ class Agent:
         :return: The next action to be taken
         :rtype: Action
         """
-        raise NotImplementedError
+        pass
