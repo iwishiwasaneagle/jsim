@@ -1,7 +1,5 @@
-jsim.Simulation namespace
-=========================
-
-.. py:module:: jsim.Simulation
+jsim.Simulation package
+=======================
 
 Submodules
 ----------
@@ -10,6 +8,14 @@ jsim.Simulation.Simulation module
 ---------------------------------
 
 .. automodule:: jsim.Simulation.Simulation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: jsim.Simulation
    :members:
    :undoc-members:
    :show-inheritance:

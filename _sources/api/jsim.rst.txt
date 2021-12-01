@@ -9,18 +9,8 @@ Subpackages
 
    jsim.Agent
    jsim.Environment
+   jsim.Meta
    jsim.Simulation
-
-Submodules
-----------
-
-jsim.skeleton module
---------------------
-
-.. automodule:: jsim.skeleton
-   :members:
-   :undoc-members:
-   :show-inheritance:
 
 Module contents
 ---------------

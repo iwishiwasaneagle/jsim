@@ -1,7 +1,5 @@
-jsim.Agent namespace
-====================
-
-.. py:module:: jsim.Agent
+jsim.Agent package
+==================
 
 Submodules
 ----------
@@ -10,6 +8,14 @@ jsim.Agent.Agent module
 -----------------------
 
 .. automodule:: jsim.Agent.Agent
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: jsim.Agent
    :members:
    :undoc-members:
    :show-inheritance:

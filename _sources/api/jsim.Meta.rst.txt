@@ -1,0 +1,29 @@
+jsim.Meta package
+=================
+
+Submodules
+----------
+
+jsim.Meta.Action module
+-----------------------
+
+.. automodule:: jsim.Meta.Action
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+jsim.Meta.Sensation module
+--------------------------
+
+.. automodule:: jsim.Meta.Sensation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: jsim.Meta
+   :members:
+   :undoc-members:
+   :show-inheritance:

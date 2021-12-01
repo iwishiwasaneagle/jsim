@@ -1,7 +1,5 @@
-jsim.Environment namespace
-==========================
-
-.. py:module:: jsim.Environment
+jsim.Environment package
+========================
 
 Submodules
 ----------
@@ -10,6 +8,14 @@ jsim.Environment.Environment module
 -----------------------------------
 
 .. automodule:: jsim.Environment.Environment
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: jsim.Environment
    :members:
    :undoc-members:
    :show-inheritance:
