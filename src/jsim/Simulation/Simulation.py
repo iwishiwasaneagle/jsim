@@ -5,7 +5,10 @@ agent and the environment.
 A simulation class is created by deriving from `Simulation` and providing the
 implementation to `collect_data()`.
 """
-from abc import ABC, abstractmethod
+from abc import ABC
+
+from loguru import logger
+from tqdm import tqdm
 
 from jsim.Agent import Agent
 from jsim.Environment import Environment
@@ -18,7 +21,7 @@ class Simulation(ABC):
     agent and an environment instances at the moment of creation.
     """
 
-    def __init__(self, pa: Agent, pe: Environment) -> None:
+    def __init__(self, pa: Agent, pe: Environment, dt=0.1) -> None:
         """
         Initializes the simulation instance, the agent, and the environment.
         `start_trial` is called after initializing the aforementioned classes.
@@ -28,16 +31,24 @@ class Simulation(ABC):
         :param pe: The environment to initialize with the simulation
         :type pe: Environment
         """
-        pass
+        self.dt = dt
+
+        self.env: Environment = pe(psim=self)
+        self.sensation: Sensation = None
+        self.agent: Agent = pa()
+        self.action: Action = None
+
+        self.start_trial()
 
     def start_trial(self) -> None:
         """
         Forces the beginning of a new trial. Calls `self.pa.start_trial()` and
         `self.pe.start_trial()` to get the first action and sensation respectively.
         """
-        pass
+        self.sensation = self.env.start_trial()
+        self.action = self.agent.start_trial(self.sensation)
 
-    def steps(num_steps: int) -> None:
+    def steps(self, num_steps: int) -> None:
         """
         Runs the simulation for `num_steps` steps, starting from whatever state the
         environment is in. If the terminal state is reached, it should immediately
@@ -47,9 +58,31 @@ class Simulation(ABC):
         :param num_steps: Number of steps per trial
         :type num_steps: int
         """
-        pass
+        for _ in tqdm(range(num_steps), leave=False):
+            # Step through environment
+            next_sensation, reward = self.env.step(self.action)
 
-    def trials(num_trials: int, max_steps_per_trial: int) -> None:
+            # Store data as defined in self.collect_data (default does nothing)
+            self.collect_data(self.sensation, self.action, next_sensation, reward)
+
+            # Step the agent
+            next_action = self.agent.step(
+                self.sensation, self.action, next_sensation, reward
+            )
+
+            # Check if terminal constraint has been met
+            if next_sensation != 0:
+                self.action = next_action
+                self.sensation = next_sensation
+            else:
+                logger.info(
+                    "Terminal state was returned from self.env.step, \
+                        exiting current trial."
+                )
+                self.start_trial()
+                break
+
+    def trials(self, num_trials: int, max_steps_per_trial: int) -> None:
         """
         Runs the simulation for `num_trials`, starting from whatever state the
         environment is in. Each trial should be no longer than `max_steps_per_trial`.
@@ -59,9 +92,13 @@ class Simulation(ABC):
         :param max_steps_per_trial: Maximum number of steps per trial
         :type max_steps_per_trial: int
         """
-        pass
+        logger.info(
+            f"Running {num_trials} trials with a maximum steps per trial \
+                of {max_steps_per_trial}"
+        )
+        for _ in tqdm(range(num_trials)):
+            self.steps(max_steps_per_trial)
 
-    @abstractmethod
     def collect_data(
         self, ps: Sensation, pa: Action, pnext_s: Sensation, reward: float
     ) -> None:
