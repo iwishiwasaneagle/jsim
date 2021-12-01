@@ -6,6 +6,7 @@ from abc import ABC, abstractmethod
 from typing import Tuple
 
 from jsim.Meta import Action, Sensation
+from jsim.Simulation.Simulation import Simulation
 
 
 class Environment(ABC):
@@ -15,7 +16,7 @@ class Environment(ABC):
     """
 
     @abstractmethod
-    def __init__(self) -> None:
+    def __init__(self, psim: Simulation = None) -> None:
         """
         Typically provided by the user for their specialized environment. If the
         environment changes in any way with experience, then this function should
@@ -25,6 +26,7 @@ class Environment(ABC):
 
         The corresponding agent is not available at the time Environment is created.
         """
+        self.psim = psim
         pass
 
     @abstractmethod
