@@ -50,5 +50,9 @@ repos:
   rev: 4.0.1
   hooks:
   - id: flake8
+    args: [
+      --per-file-ignore,
+      "*/__init__.py:F401"
+    ]
   ## You can add flake8 plugins via `additional_dependencies`:
   #  additional_dependencies: [flake8-bugbear]
