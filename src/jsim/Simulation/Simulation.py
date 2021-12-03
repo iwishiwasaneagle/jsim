@@ -10,8 +10,8 @@ from abc import ABC, abstractmethod
 from loguru import logger
 from tqdm import tqdm
 
-from jsim.Agent.Agent import Agent
-from jsim.Environment.Environment import Environment
+from jsim.Agent import Agent
+from jsim.Environment import Environment
 from jsim.Meta import Action, State
 
 

@@ -6,7 +6,7 @@ from abc import ABC, abstractmethod
 from typing import Tuple
 
 from jsim.Meta import Action, State
-from jsim.Simulation.Simulation import Simulation
+from jsim.Simulation import Simulation
 
 
 class Environment(ABC):
