@@ -5,7 +5,7 @@ from tqdm.std import tqdm
 
 from jsim.Agent import Agent
 from jsim.Environment import Environment
-from jsim.Meta import Action, Sensation
+from jsim.Meta import Action, State
 from jsim.Simulation import Simulation
 
 
@@ -17,7 +17,7 @@ class Force(Action):
         self.y = y
 
 
-class XYSensation(Sensation):
+class XYState(State):
     def __init__(self, x=0, y=0) -> None:
         super().__init__()
 
@@ -25,19 +25,19 @@ class XYSensation(Sensation):
         self.y = y
 
 
-class Position(XYSensation):
+class Position(XYState):
     pass
 
 
-class Velocity(XYSensation):
+class Velocity(XYState):
     pass
 
 
-class Acceleration(XYSensation):
+class Acceleration(XYState):
     pass
 
 
-class State(Sensation):
+class State(State):
     def __init__(self, position=None, velocity=None, acceleration=None) -> None:
         super().__init__()
         if position is None:
@@ -65,13 +65,11 @@ class PotentialAgent(Agent):
 
         return self.policy(ps)
 
-    def step(
-        self, ps: Sensation, pa: Action, pnext_s: Sensation, reward: float
-    ) -> Action:
+    def step(self, ps: State, pa: Action, pnext_s: State, reward: float) -> Action:
 
         return self.policy(ps)
 
-    def policy(self, pnext_s: Sensation) -> Action:
+    def policy(self, pnext_s: State) -> Action:
         """
         Simple potential function following to the minima.
 
@@ -119,15 +117,15 @@ class MySim(Simulation):
 
     def steps(self, num_steps: int) -> None:
         for _ in tqdm(range(num_steps), leave=False):
-            next_s, reward = self.env.step(self.action, self.sensation)
+            next_s, reward = self.env.step(self.action, self.state)
 
-            self.collect_data(self.sensation, self.action, next_s, reward)
+            self.collect_data(self.state, self.action, next_s, reward)
 
-            next_a = self.agent.step(self.sensation, self.action, next_s, reward)
+            next_a = self.agent.step(self.state, self.action, next_s, reward)
 
             if next_s != 0:
                 self.action = next_a
-                self.sensation = next_s
+                self.state = next_s
             else:
                 self.reset()
                 break

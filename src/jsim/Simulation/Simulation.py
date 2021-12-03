@@ -12,7 +12,7 @@ from tqdm import tqdm
 
 from jsim.Agent import Agent
 from jsim.Environment import Environment
-from jsim.Meta import Action, Sensation
+from jsim.Meta import Action, State
 
 
 class Simulation(ABC):
@@ -34,7 +34,7 @@ class Simulation(ABC):
         self.dt = dt
 
         self.env: Environment = pe(psim=self)
-        self.sensation: Sensation = None
+        self.state: State = None
         self.agent: Agent = pa()
         self.action: Action = None
 
@@ -43,10 +43,10 @@ class Simulation(ABC):
     def reset(self) -> None:
         """
         Forces the beginning of a new trial. Calls `self.pa.reset()` and
-        `self.pe.reset()` to get the first action and sensation respectively.
+        `self.pe.reset()` to get the first action and state respectively.
         """
-        self.sensation = self.env.reset()
-        self.action = self.agent.reset(self.sensation)
+        self.state = self.env.reset()
+        self.action = self.agent.reset(self.state)
 
     def steps(self, num_steps: int) -> None:
         """
@@ -60,20 +60,18 @@ class Simulation(ABC):
         """
         for _ in tqdm(range(num_steps), leave=False):
             # Step through environment
-            next_sensation, reward = self.env.step(self.action)
+            next_state, reward = self.env.step(self.action)
 
             # Store data as defined in self.collect_data (default does nothing)
-            self.collect_data(self.sensation, self.action, next_sensation, reward)
+            self.collect_data(self.state, self.action, next_state, reward)
 
             # Step the agent
-            next_action = self.agent.step(
-                self.sensation, self.action, next_sensation, reward
-            )
+            next_action = self.agent.step(self.state, self.action, next_state, reward)
 
             # Check if terminal constraint has been met
-            if next_sensation != 0:
+            if next_state != 0:
                 self.action = next_action
-                self.sensation = next_sensation
+                self.state = next_state
             else:
                 logger.info(
                     "Terminal state was returned from self.env.step, \
@@ -100,19 +98,19 @@ class Simulation(ABC):
             self.steps(max_steps_per_trial)
 
     def collect_data(
-        self, ps: Sensation, pa: Action, pnext_s: Sensation, reward: float
+        self, ps: State, pa: Action, pnext_s: State, reward: float
     ) -> None:
         """
         This function is called once on each step of the simulation. The default method
         does nothing. This is where the user can gain access to the simulation's
         behaviour.
 
-        :param ps: Previous sensation, off of which the action was decided
-        :type ps: Sensation
+        :param ps: Previous state, off of which the action was decided
+        :type ps: State
         :param pa: The action taken
         :type pa: Action
-        :param pnext_s: The sensation from the environment as a result of `pa`
-        :type pnext_s: Sensation
+        :param pnext_s: The state from the environment as a result of `pa`
+        :type pnext_s: State
         :param reward: The reward gained by taking action `pa`
         :type reward: float
         """
