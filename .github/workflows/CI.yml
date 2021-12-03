@@ -45,23 +45,11 @@ jobs:
         with:
           python-version: 3.9
 
-      - uses: actions/cache@v2
-        id: cache-venv-examples
-        with:
-          path: ./venv/
-          key: ${{ runner.os }}-venv-${{ hashFiles('**/setup*') }}
-          restore-keys: |
-            ${{ runner.os }}-venv-examples
-
-      - run: python -m venv ./venv && . ./venv/bin/activate && 
-             python setup.py install
-        if: steps.cache-venv-examples.outputs.cache-hit != 'true'
-
       - name: Run all examples
         run: | 
           list=$(find examples -type f -name "*.py")
           for i in $list
           do
-              . ./venv/bin/activate && CI=1 python $i
+            CI=1 python $i
           done
       
