@@ -17,6 +17,9 @@ pluggy==1.0.0
 pre-commit==2.15.0
 py==1.11.0
 pyparsing==3.0.6
+PyQt5==5.15.6
+PyQt5-Qt5==5.15.2
+PyQt5-sip==12.9.0
 python-dateutil==2.8.2
 PyYAML==6.0
 setuptools-scm==6.3.2

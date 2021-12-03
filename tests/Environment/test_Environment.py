@@ -11,6 +11,6 @@ def environment():
 
 
 def test_Environment_is_properly_abstract():
-    abstract_methods = frozenset({"step", "start_trial", "__init__"})
+    abstract_methods = frozenset({"step", "reset", "__init__"})
     assert Environment.__abstractmethods__ - abstract_methods == frozenset()
     assert abstract_methods - Environment.__abstractmethods__ == frozenset()

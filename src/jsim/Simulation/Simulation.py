@@ -24,7 +24,7 @@ class Simulation(ABC):
     def __init__(self, pa: Agent, pe: Environment, dt=0.1) -> None:
         """
         Initializes the simulation instance, the agent, and the environment.
-        `start_trial` is called after initializing the aforementioned classes.
+        `reset` is called after initializing the aforementioned classes.
 
         :param pa: The agent to initialize with the simulation
         :type pa: Agent
@@ -38,21 +38,21 @@ class Simulation(ABC):
         self.agent: Agent = pa()
         self.action: Action = None
 
-        self.start_trial()
+        self.reset()
 
-    def start_trial(self) -> None:
+    def reset(self) -> None:
         """
-        Forces the beginning of a new trial. Calls `self.pa.start_trial()` and
-        `self.pe.start_trial()` to get the first action and sensation respectively.
+        Forces the beginning of a new trial. Calls `self.pa.reset()` and
+        `self.pe.reset()` to get the first action and sensation respectively.
         """
-        self.sensation = self.env.start_trial()
-        self.action = self.agent.start_trial(self.sensation)
+        self.sensation = self.env.reset()
+        self.action = self.agent.reset(self.sensation)
 
     def steps(self, num_steps: int) -> None:
         """
         Runs the simulation for `num_steps` steps, starting from whatever state the
         environment is in. If the terminal state is reached, it should immediately
-        prepare for the next trail by callied `start_trial`. Switching from terminal
+        prepare for the next trail by callied `reset`. Switching from terminal
         state to a new state does not count as a step.
 
         :param num_steps: Number of steps per trial
@@ -79,7 +79,7 @@ class Simulation(ABC):
                     "Terminal state was returned from self.env.step, \
                         exiting current trial."
                 )
-                self.start_trial()
+                self.reset()
                 break
 
     def trials(self, num_trials: int, max_steps_per_trial: int) -> None:
