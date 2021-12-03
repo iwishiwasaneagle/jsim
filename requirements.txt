@@ -13,7 +13,9 @@ numpy==1.21.4
 packaging==21.3
 Pillow==8.4.0
 platformdirs==2.4.0
+pluggy==1.0.0
 pre-commit==2.15.0
+py==1.11.0
 pyparsing==3.0.6
 python-dateutil==2.8.2
 PyYAML==6.0
@@ -21,5 +23,6 @@ setuptools-scm==6.3.2
 six==1.16.0
 toml==0.10.2
 tomli==1.2.2
+tox==3.24.4
 tqdm==4.62.3
 virtualenv==20.10.0
