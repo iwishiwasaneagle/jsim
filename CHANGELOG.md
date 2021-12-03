@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.5] - 2021-12-03
+
+### Bug Fixes
+
+- Pass psim to env as outlined in docs
+- Frozen set of requirements which will help with dependabot security advice
+
+### Features
+
+- Potential function based navigation example
+- Policy function to extend for user
+- Add functionality to steps, trials, and __init__ as outlined in docs
+- Add learn function to the Agent (#5)
+
+### Refactor
+
+- Start_trial renamed to reset (#8)
+- Rename sensation to state (#11)
+- Adjust architecture as per #12
+
+### Testing
+
+- Run examples as integration test
+- Use cache to speed up CI
+- Remove windows and macos from CI testing
+- Tests if docs still build
+
 ## [0.0.4] - 2021-12-01
 
 ### Bug Fixes
