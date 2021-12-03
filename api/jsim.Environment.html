@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>jsim.Environment package &#8212; jsim 0.0.4 documentation</title>
+    <title>jsim.Environment package &#8212; jsim 0.0.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -44,35 +44,35 @@
 environment, the rewards, and the trial terminations.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="jsim.Environment.Environment.Environment">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">jsim.Environment.Environment.</span></span><span class="sig-name descname"><span class="pre">Environment</span></span><a class="reference internal" href="../_modules/jsim/Environment/Environment.html#Environment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#jsim.Environment.Environment.Environment" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">jsim.Environment.Environment.</span></span><span class="sig-name descname"><span class="pre">Environment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="jsim.Simulation.html#jsim.Simulation.Simulation.Simulation" title="jsim.Simulation.Simulation.Simulation"><span class="pre">jsim.Simulation.Simulation.Simulation</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/jsim/Environment/Environment.html#Environment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#jsim.Environment.Environment.Environment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.8/library/abc.html#abc.ABC" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
 <p>Base class of all environments. Specific environments are instances of subclassed
 derived from here.</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="jsim.Environment.Environment.Environment.start_trial">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">start_trial</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="jsim.Meta.html#jsim.Meta.Sensation.Sensation" title="jsim.Meta.Sensation.Sensation"><span class="pre">jsim.Meta.Sensation.Sensation</span></a></span></span><a class="reference internal" href="../_modules/jsim/Environment/Environment.html#Environment.start_trial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#jsim.Environment.Environment.Environment.start_trial" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="jsim.Environment.Environment.Environment.reset">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="jsim.Meta.html#jsim.Meta.State.State" title="jsim.Meta.State.State"><span class="pre">jsim.Meta.State.State</span></a></span></span><a class="reference internal" href="../_modules/jsim/Environment/Environment.html#Environment.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#jsim.Environment.Environment.Environment.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function must be provided by the user for their specialized environment.
 Called at the beginning of a new trial and should perform any needed
 initialization of the environment to prepare for a new trial.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>First sensation of the trial</p>
+<dd class="field-odd"><p>First state of the trial</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="jsim.Meta.html#jsim.Meta.Sensation.Sensation" title="jsim.Meta.Sensation.Sensation">Sensation</a></p>
+<dd class="field-even"><p><a class="reference internal" href="jsim.Meta.html#jsim.Meta.State.State" title="jsim.Meta.State.State">State</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="jsim.Environment.Environment.Environment.step">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="jsim.Meta.html#jsim.Meta.Action.Action" title="jsim.Meta.Action.Action"><span class="pre">jsim.Meta.Action.Action</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="jsim.Meta.html#jsim.Meta.Sensation.Sensation" title="jsim.Meta.Sensation.Sensation"><span class="pre">jsim.Meta.Sensation.Sensation</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#float" title="(in Python v3.8)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/jsim/Environment/Environment.html#Environment.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#jsim.Environment.Environment.Environment.step" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="jsim.Meta.html#jsim.Meta.Action.Action" title="jsim.Meta.Action.Action"><span class="pre">jsim.Meta.Action.Action</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="jsim.Meta.html#jsim.Meta.State.State" title="jsim.Meta.State.State"><span class="pre">jsim.Meta.State.State</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#float" title="(in Python v3.8)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/jsim/Environment/Environment.html#Environment.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#jsim.Environment.Environment.Environment.step" title="Permalink to this definition">¶</a></dt>
 <dd><p>Must be provided by the user for their specialized environment. Called once
 every simulation step and causes the environment to undergo a transition
 from its current state to a next state dependent on the action taken by <cite>pa</cite>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If the environment transitions into a terminal state, the returned sensation
+<p>If the environment transitions into a terminal state, the returned state
 will have a special value of 0</p>
 </div>
 <dl class="field-list simple">
@@ -81,13 +81,13 @@ will have a special value of 0</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p>sensation - The next sensation due to action <cite>pa</cite></p></li>
+<li><p>state - The next state due to action <cite>pa</cite></p></li>
 <li><p>reward - The payoff for the state transition due to action <cite>pa</cite></p></li>
 </ul>
 </p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Tuple[<a class="reference internal" href="jsim.Meta.html#jsim.Meta.Sensation.Sensation" title="jsim.Meta.Sensation.Sensation">Sensation</a>, <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#float" title="(in Python v3.8)">float</a>]</p>
+<dd class="field-odd"><p>Tuple[<a class="reference internal" href="jsim.Meta.html#jsim.Meta.State.State" title="jsim.Meta.State.State">State</a>, <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#float" title="(in Python v3.8)">float</a>]</p>
 </dd>
 </dl>
 </dd></dl>

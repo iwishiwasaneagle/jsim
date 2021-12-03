@@ -12,10 +12,10 @@ jsim.Meta.Action module
    :undoc-members:
    :show-inheritance:
 
-jsim.Meta.Sensation module
---------------------------
+jsim.Meta.State module
+----------------------
 
-.. automodule:: jsim.Meta.Sensation
+.. automodule:: jsim.Meta.State
    :members:
    :undoc-members:
    :show-inheritance:
