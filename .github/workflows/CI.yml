@@ -51,7 +51,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-venv-docs
 
-    - run: python -m venv
+    - run: python -m venv venv && . ./venv/bin/activate && pip install tox
       if: steps.cache-venv-tests.outputs.cache-hit != 'true'
 
     - name: Test with tox
