@@ -11,6 +11,8 @@ import os
 import sys
 import shutil
 
+import sphinx_rtd_theme
+
 # -- Path setup --------------------------------------------------------------
 
 __location__ = os.path.dirname(__file__)
@@ -18,7 +20,8 @@ __location__ = os.path.dirname(__file__)
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-sys.path.insert(0, os.path.join(__location__, "../src"))
+sys.path.insert(0, os.path.join(__location__, "../src")) # for jsim
+sys.path.insert(0, os.path.join(__location__, "../")) # for examples
 
 # -- Run sphinx-apidoc -------------------------------------------------------
 # This hack is necessary since RTD does not issue `sphinx-apidoc` before running
@@ -28,31 +31,46 @@ sys.path.insert(0, os.path.join(__location__, "../src"))
 # setup.py install" in the RTD Advanced Settings.
 # Additionally it helps us to avoid running apidoc manually
 
+autodoc_mock_imports = [ # https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#confval-autodoc_mock_imports
+    "matplotlib",
+    "numpy",
+    "loguru",
+    "tqdm"
+    ]
+
 try:  # for Sphinx >= 1.7
     from sphinx.ext import apidoc
 except ImportError:
     from sphinx import apidoc
 
-output_dir = os.path.join(__location__, "api")
-module_dir = os.path.join(__location__, "../src/jsim")
-try:
-    shutil.rmtree(output_dir)
-except FileNotFoundError:
-    pass
+# for jsim
+jsim_dir = os.path.join(__location__, "../src/jsim")
+examples_dir = os.path.join(__location__, "../examples")
 
-try:
-    import sphinx
+def generate(out_name, code_dir):
+    output_dir = os.path.join(__location__, out_name)
 
-    cmd_line = f"sphinx-apidoc --implicit-namespaces -f -o {output_dir} {module_dir}"
+    try:
+        shutil.rmtree(output_dir)
+    except FileNotFoundError:
+        pass
 
-    args = cmd_line.split(" ")
-    if tuple(sphinx.__version__.split(".")) >= ("1", "7"):
-        # This is a rudimentary parse_version to avoid external dependencies
-        args = args[1:]
+    try:
+        import sphinx
 
-    apidoc.main(args)
-except Exception as e:
-    print("Running `sphinx-apidoc` failed!\n{}".format(e))
+        cmd_line = f"sphinx-apidoc --implicit-namespaces -f -o {output_dir} {code_dir}"
+
+        args = cmd_line.split(" ")
+        if tuple(sphinx.__version__.split(".")) >= ("1", "7"):
+            # This is a rudimentary parse_version to avoid external dependencies
+            args = args[1:]
+
+        apidoc.main(args)
+    except Exception as e:
+        print("Running `sphinx-apidoc` failed!\n{}".format(e))
+
+generate("api", jsim_dir)
+generate("examples", examples_dir)
 
 # -- General configuration ---------------------------------------------------
 
@@ -72,6 +90,7 @@ extensions = [
     "sphinx.ext.ifconfig",
     "sphinx.ext.mathjax",
     "sphinx.ext.napoleon",
+    "sphinx_rtd_theme"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -174,14 +193,23 @@ todo_emit_warnings = True
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = "alabaster"
+html_theme = "sphinx_rtd_theme"
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-    "sidebar_width": "300px",
-    "page_width": "1200px"
+    'logo_only': False,
+    'display_version': True,
+    'prev_next_buttons_location': 'bottom',
+    'style_external_links': False,
+    'vcs_pageview_mode': '',
+    # Toc options
+    'collapse_navigation': True,
+    'sticky_navigation': True,
+    'navigation_depth': 4,
+    'includehidden': True,
+    'titles_only': False
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
