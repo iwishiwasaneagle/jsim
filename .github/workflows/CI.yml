@@ -23,7 +23,7 @@ jobs:
       id: cache-venv-tests
       with:
         path: ./venv/
-        key: ${{ runner.os }}-venv-${{ hashFiles('**/setup.cfg') }}
+        key: ${{ runner.os }}-venv-${{ hashFiles('**/requirements.txt') }}
         restore-keys: |
           ${{ runner.os }}-venv-
 
