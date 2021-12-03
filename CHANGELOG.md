@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.6] - 2021-12-03
+
+### Bug Fixes
+
+- Imports where to module, not the actual classes
+- Circular dependcy error
+
+### Documentation
+
+- New RTD theme with better layout
+
 ## [0.0.5] - 2021-12-03
 
 ### Bug Fixes
