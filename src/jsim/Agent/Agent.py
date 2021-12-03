@@ -60,6 +60,14 @@ class Agent(ABC):
         """
         pass
 
+    def learn(self) -> None:
+        """
+        The area for the agent to learn. This is called by the simulation at the end of
+        every step/trial/whenever is suitable. Inputs are highly specific to the users
+        use case.
+        """
+        pass
+
     @abstractmethod
     def policy(self, pnext_s: Sensation) -> Action:
         """
