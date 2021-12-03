@@ -3,10 +3,13 @@ The agent entity moves around and interacts with the environment. From the envir
 it receives states and selects actions. The agent may or may not learn, may or may
 not build a model of the environment (i.e SLAM), etc.
 """
-
 from abc import ABC, abstractmethod
+from copy import copy
+from typing import Tuple
 
+from jsim.Environment import Environment
 from jsim.Meta import Action, State
+from jsim.Simulation import Simulation
 
 
 class Agent(ABC):
@@ -15,29 +18,42 @@ class Agent(ABC):
     """
 
     @abstractmethod
-    def __init__(self) -> None:
+    def __init__(self, psim: Simulation, penv: Environment) -> None:
         """
         Extended by the user for their specialised use case. Called once at the
         instantiation of the simulation.
 
         The agent can consult with the environment or simulation as needed. Both are
         guaranteed to be existant and inited by the time the Agent is created.
+
+        :param psim: Pointer to the simulation class instance housing the Agent
+        :type psim: Simulation
+        :param penv: Pointer to the environment class instance with which the agent is
+            interacting
+        :type penv: Environment
         """
-        pass
+
+        self.psim = psim
+        self.penv = penv
 
     @abstractmethod
-    def reset(self, ps: State) -> Action:
+    def reset(self, ps: State) -> Tuple[Action, State]:
         """
         Extended by the user for their specialised use case. Called at the beginning
         of each new trial. Should perform any needed initialization of the agent to
         prepare it for beginning a new trial.
+
+        Note:
+            - It is essential that the super method is called via super().reset(ps)
 
         :param ps: The first state of the trial.
         :type ps: state
         :return: The first action of the agent in the new trial, in response to `ps`
         :rtype: Action
         """
-        pass
+        self.state = copy(ps)
+
+        return self.state, self.policy
 
     @abstractmethod
     def step(self, ps: State, pa: Action, pnext_s: State, reward: float) -> Action:
@@ -58,6 +74,22 @@ class Agent(ABC):
         """
         pass
 
+    @abstractmethod
+    def update(self, pa: Action) -> State:
+        """
+        The function to handle the physical behavior of the agent.
+
+        A physics based simulation may update the accelerations from the forces or a
+        cellular automaton may step into the corresponding cell from the action. This
+        function is highly dependent on the use case.
+
+        :param pa: The action to react to
+        :type pa: Action
+        :return: The agent's state after the action
+        :rtype: State
+        """
+        pass
+
     def learn(self) -> None:
         """
         The area for the agent to learn. This is called by the simulation at the end of
@@ -70,7 +102,7 @@ class Agent(ABC):
     def policy(self, pnext_s: State) -> Action:
         """
         Must be provided by the user. This encodes the agents response to a given
-        state.
+        state and should be called from within `Agent::step`.
 
         :param pnext_s: The currently sensed State (i.e. the current state)
         :type pnext_s: State

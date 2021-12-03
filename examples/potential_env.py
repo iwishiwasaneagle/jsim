@@ -1,7 +1,9 @@
 from typing import Tuple
 
 import matplotlib.pyplot as plt
-from tqdm.std import tqdm
+import numpy as np
+from loguru import logger
+from tqdm import tqdm
 
 from jsim.Agent import Agent
 from jsim.Environment import Environment
@@ -37,7 +39,7 @@ class Acceleration(XYState):
     pass
 
 
-class State(State):
+class PhysicalState(State):
     def __init__(self, position=None, velocity=None, acceleration=None) -> None:
         super().__init__()
         if position is None:
@@ -55,22 +57,38 @@ class State(State):
 
 
 class PotentialAgent(Agent):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, *args) -> None:
+        super().__init__(*args)
 
-        self.reset(State())
+        self.reset(PhysicalState())
 
-    def reset(self, ps: State) -> Action:
-        self.state = ps
-
+    def reset(self, ps: PhysicalState) -> Force:
+        super().reset(ps)
         return self.policy(ps)
 
-    def step(self, ps: State, pa: Action, pnext_s: State, reward: float) -> Action:
+    def step(
+        self, ps: PhysicalState, pa: Force, pnext_s: PhysicalState, reward: float
+    ) -> Force:
+        return self.policy(self.state)
 
-        return self.policy(ps)
+    def update(self, pa: Force) -> PhysicalState:
+        fx, fy = pa.x, pa.y
 
-    def policy(self, pnext_s: State) -> Action:
+        self.state.acc.x = fx * 0.1 - 0.4 * self.state.vel.x
+        self.state.acc.y = fy * 0.1 - 0.4 * self.state.vel.y
+
+        self.state.vel.x += self.state.acc.x * self.psim.dt
+        self.state.vel.y += self.state.acc.y * self.psim.dt
+
+        self.state.pos.x += self.state.vel.x * self.psim.dt
+        self.state.pos.y += self.state.vel.y * self.psim.dt
+
+        return self.state
+
+    def policy(self, pnext_s: PhysicalState) -> Force:
         """
+        The agent wants to get to (20,20).
+
         Simple potential function following to the minima.
 
             $$fx = d/dx [ (x-20)^2 + (y-20)^2 ] = 2(x-20)$$
@@ -87,52 +105,57 @@ class PotentialEnv(Environment):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
-    def reset(self) -> State:
-        return State(position=Position(15), velocity=Velocity(-3, -3))
+    def reset(self) -> None:
+        """
+        This env has no memory or physicalness to it.
+        """
+        pass
 
-    def step(self, pa: Force, ps: State) -> Tuple[State, float]:
-        p, v, a = ps.pos, ps.vel, ps.acc
-        fx, fy = pa.x, pa.y
-
-        a.x = fx * 0.1 - 0.4 * v.x
-        a.y = fy * 0.1 - 0.4 * v.y
-
-        v.x += a.x * self.psim.dt
-        v.y += a.y * self.psim.dt
-
-        p.x += v.x * self.psim.dt
-        p.y += v.y * self.psim.dt
-
-        return State(p, v, a), 0
+    def step(self) -> Tuple[None, float]:
+        """
+        This env has no memory or physicalness to it.
+        """
+        return None, 0
 
 
-class MySim(Simulation):
+class PotentialSim(Simulation):
+    env: PotentialEnv
+    agent: PotentialAgent
+
     def __init__(self, dt=0.1) -> None:
         super().__init__(PotentialAgent, PotentialEnv, dt=dt)
         self.pos_arr = []
 
-    def collect_data(self, ps: State, pa: Force, pnext_s: State, reward: float) -> None:
+    def reset(self) -> None:
+        self.env_s = self.env.reset()
+        self.agent_s = PhysicalState(
+            position=Position(*(20 + 5 * np.random.normal(0, (2, 1)))),
+            velocity=Velocity(*np.random.rand(2) * 5),
+        )
+        self.agent_a = self.agent.reset(self.agent_s)
 
+    def collect_data(self, ps: PhysicalState) -> None:
         self.pos_arr.append((ps.pos.x, ps.pos.y))
 
     def steps(self, num_steps: int) -> None:
-        for _ in tqdm(range(num_steps), leave=False):
-            next_s, reward = self.env.step(self.action, self.state)
+        for i in tqdm(range(num_steps), leave=False):
 
-            self.collect_data(self.state, self.action, next_s, reward)
+            agent_a = self.agent.step(self.agent_s, self.agent_a, None, 0)
+            agent_s = self.agent.update(agent_a)
 
-            next_a = self.agent.step(self.state, self.action, next_s, reward)
+            self.collect_data(agent_s)
 
-            if next_s != 0:
-                self.action = next_a
-                self.state = next_s
+            if agent_s != 0:
+                self.agent_a = agent_a
+                self.agent_s = agent_s
             else:
                 self.reset()
-                break
+                logger.info(f"Trial completed after {i}/{num_steps} steps")
+                return
 
 
 if __name__ == "__main__":
-    mysim = MySim()
+    mysim = PotentialSim()
 
     mysim.steps(1000)
 
@@ -144,6 +167,9 @@ if __name__ == "__main__":
 
     ax1 = fig.add_subplot(1, 2, 1)
     ax1.plot(pos_x, pos_y)
+    ax1.scatter(pos_x[0], pos_y[0], label="Start")
+    ax1.scatter(pos_x[-1], pos_y[-1], label="End")
+    ax1.legend()
 
     ax2 = fig.add_subplot(1, 2, 2)
     ax2.plot(t, pos_x)

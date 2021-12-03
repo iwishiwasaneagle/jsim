@@ -5,7 +5,7 @@ agent and the environment.
 A simulation class is created by deriving from `Simulation` and providing the
 implementation to `collect_data()`.
 """
-from abc import ABC
+from abc import ABC, abstractmethod
 
 from loguru import logger
 from tqdm import tqdm
@@ -33,21 +33,27 @@ class Simulation(ABC):
         """
         self.dt = dt
 
-        self.env: Environment = pe(psim=self)
-        self.state: State = None
-        self.agent: Agent = pa()
-        self.action: Action = None
+        self.env: Environment = pe(self)
+        self.agent: Agent = pa(self, self.env)
 
         self.reset()
 
+    @abstractmethod
     def reset(self) -> None:
         """
         Forces the beginning of a new trial. Calls `self.pa.reset()` and
         `self.pe.reset()` to get the first action and state respectively.
-        """
-        self.state = self.env.reset()
-        self.action = self.agent.reset(self.state)
 
+        Example:
+
+        .. code-block:: python
+
+            self.state = self.env.reset()
+            self.action = self.agent.reset(self.state)
+        """
+        pass
+
+    @abstractmethod
     def steps(self, num_steps: int) -> None:
         """
         Runs the simulation for `num_steps` steps, starting from whatever state the
@@ -57,28 +63,34 @@ class Simulation(ABC):
 
         :param num_steps: Number of steps per trial
         :type num_steps: int
+
+        Example:
+
+        .. code-block:: python
+
+            for _ in range(num_steps):
+                # Step through environment
+                next_s, r = self.env.step(self.action)
+
+                # Store data as defined in self.collect_data (default does nothing)
+                self.collect_data(self.state, self.action, next_state, r)
+
+                # Step the agent
+                next_a = self.agent.step(self.state, self.action, next_s, r)
+
+                # Check if terminal constraint has been met
+                if next_state != 0:
+                    self.action = next_a
+                    self.state = next_s
+                else:
+                    print(
+                        "Terminal state was returned from self.env.step, \
+                            exiting current trial."
+                    )
+                    self.reset()
+                    break
         """
-        for _ in tqdm(range(num_steps), leave=False):
-            # Step through environment
-            next_state, reward = self.env.step(self.action)
-
-            # Store data as defined in self.collect_data (default does nothing)
-            self.collect_data(self.state, self.action, next_state, reward)
-
-            # Step the agent
-            next_action = self.agent.step(self.state, self.action, next_state, reward)
-
-            # Check if terminal constraint has been met
-            if next_state != 0:
-                self.action = next_action
-                self.state = next_state
-            else:
-                logger.info(
-                    "Terminal state was returned from self.env.step, \
-                        exiting current trial."
-                )
-                self.reset()
-                break
+        pass
 
     def trials(self, num_trials: int, max_steps_per_trial: int) -> None:
         """
