@@ -49,7 +49,7 @@ jobs:
       - uses: actions/cache@v2
         id: cache-venv-examples
         with:
-          path: ./.venv/
+          path: ./venv/
           key: ${{ runner.os }}-venv-${{ hashFiles('**/setup.cfg') }}
           restore-keys: |
             ${{ runner.os }}-venv-
