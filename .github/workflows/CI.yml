@@ -25,7 +25,7 @@ jobs:
         path: ./venv/
         key: ${{ runner.os }}-venv-${{ hashFiles('**/requirements.txt') }}
         restore-keys: |
-          ${{ runner.os }}-venv-
+          ${{ runner.os }}-venv-tests
 
     - run: python -m venv ./venv && . ./venv/bin/activate && 
            pip install -r requirements.txt
@@ -49,9 +49,9 @@ jobs:
         id: cache-venv-examples
         with:
           path: ./venv/
-          key: ${{ runner.os }}-venv-${{ hashFiles('**/setup.cfg') }}
+          key: ${{ runner.os }}-venv-${{ hashFiles('**/setup*') }}
           restore-keys: |
-            ${{ runner.os }}-venv-
+            ${{ runner.os }}-venv-examples
 
       - run: python -m venv ./venv && . ./venv/bin/activate && 
              python setup.py install
