@@ -34,6 +34,30 @@ jobs:
     - name: Test with tox
       run: . ./venv/bin/activate && tox
 
+  run-doc-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    - uses: actions/cache@v2
+      id: cache-venv-tests
+      with:
+        path: ./venv/
+        key: ${{ runner.os }}-venv-${{ hashFiles('**/docs/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-venv-docs
+
+    - run: python -m venv
+      if: steps.cache-venv-tests.outputs.cache-hit != 'true'
+
+    - name: Test with tox
+      run: . ./venv/bin/activate && tox -e doctests
+
+
   run-examples:
     runs-on: ubuntu-latest
     name: run examples
