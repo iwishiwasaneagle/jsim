@@ -36,8 +36,7 @@ jobs:
  
   run-examples:
     runs-on: ubuntu-latest
-    name: Run examples
-    needs: run-tests
+    name: run examples
     
     steps:
       - uses: actions/checkout@v2
