@@ -6,7 +6,7 @@ on:
     pull_request:
 
 jobs:
-  build:
+  run-tests:
     runs-on: ${{matrix.platform}}
     strategy:
       matrix:
@@ -24,3 +24,27 @@ jobs:
         pip install -e ".[test]"
     - name: Test with tox
       run: tox
+ 
+  run-examples:
+    runs-on: ubuntu-latest
+    name: Run examples
+    needs: run-tests
+    
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install jsim
+        run: |
+          python -m pip install --upgrade pip
+          python3 setup.py install
+      - name: Run all examples
+        run: | 
+          list=$(find examples -type f -name "*.py")                                                                                                                                                                              ✔  jsim 
+          for i in $list
+          do
+              CI=1 python $i
+          done
+      
