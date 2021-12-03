@@ -84,7 +84,7 @@ jobs:
 
       - name: Run all examples
         run: |
-          list=$(find examples -type f -name "*.py")
+          list=$(find examples -type f -name "*.py" ! -name "__init__.py")
           for i in $list
           do
             CI=1 python $i
