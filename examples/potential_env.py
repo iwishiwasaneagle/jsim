@@ -58,9 +58,9 @@ class PotentialAgent(Agent):
     def __init__(self) -> None:
         super().__init__()
 
-        self.start_trial(State())
+        self.reset(State())
 
-    def start_trial(self, ps: State) -> Action:
+    def reset(self, ps: State) -> Action:
         self.state = ps
 
         return self.policy(ps)
@@ -89,7 +89,7 @@ class PotentialEnv(Environment):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
-    def start_trial(self) -> State:
+    def reset(self) -> State:
         return State(position=Position(15), velocity=Velocity(-3, -3))
 
     def step(self, pa: Force, ps: State) -> Tuple[State, float]:
@@ -129,7 +129,7 @@ class MySim(Simulation):
                 self.action = next_a
                 self.sensation = next_s
             else:
-                self.start_trial()
+                self.reset()
                 break
 
 

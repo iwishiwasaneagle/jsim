@@ -26,7 +26,7 @@ class Agent(ABC):
         pass
 
     @abstractmethod
-    def start_trial(self, ps: Sensation) -> Action:
+    def reset(self, ps: Sensation) -> Action:
         """
         Extended by the user for their specialised use case. Called at the beginning
         of each new trial. Should perform any needed initialization of the agent to

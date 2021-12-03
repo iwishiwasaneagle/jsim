@@ -30,7 +30,7 @@ class Environment(ABC):
         pass
 
     @abstractmethod
-    def start_trial(self) -> Sensation:
+    def reset(self) -> Sensation:
         """
         This function must be provided by the user for their specialized environment.
         Called at the beginning of a new trial and should perform any needed
