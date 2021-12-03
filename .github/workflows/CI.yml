@@ -42,7 +42,7 @@ jobs:
           python3 setup.py install
       - name: Run all examples
         run: | 
-          list=$(find examples -type f -name "*.py")                                                                                                                                                                              ✔  jsim 
+          list=$(find examples -type f -name "*.py")
           for i in $list
           do
               CI=1 python $i
