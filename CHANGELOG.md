@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.7] - 2021-12-04
+
+### Documentation
+
+- Added capability to include jupyter notebooks in docs incl output
+- Local Hill Climb and Potential-based navigation as jupyter notebooks
+
+### Refactor
+
+- User defines where env and agent get initialized
+
 ## [0.0.6] - 2021-12-04
 
 ### Bug Fixes
