@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 
 # takes the tag as an argument (e.g. v0.1.0)
-if [ -n "$1" ]; then
+if [ -n "$1" ]
+then
+
+    if ! command -v pre-commit &>/dev/null
+    then
+        echo "error: pre-commit is not in PATH. This will cause issues with this script."
+        exit 1
+    fi
+
     pre-commit uninstall
     git-cliff --tag "$1" > CHANGELOG.md
     git commit CHANGELOG.md -m "chore(release): prepare for $1"
