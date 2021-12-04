@@ -109,7 +109,7 @@ jobs:
           tag: ${{ github.ref }}
           file: dist/**
           file_glob: true
-          release_name: "Release v${{needs.setup-envs.outputs.version}}"
+          release_name: "Release ${{needs.setup-envs.outputs.version}}"
           body: "${{ needs.generate-changelog.outputs.release_body }}"
 
   publish-gh-page:
