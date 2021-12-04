@@ -12,6 +12,7 @@ import sys
 import shutil
 
 import sphinx_rtd_theme
+import nbsphinx
 
 # -- Path setup --------------------------------------------------------------
 
@@ -21,7 +22,6 @@ __location__ = os.path.dirname(__file__)
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 sys.path.insert(0, os.path.join(__location__, "../src")) # for jsim
-sys.path.insert(0, os.path.join(__location__, "../")) # for examples
 
 # -- Run sphinx-apidoc -------------------------------------------------------
 # This hack is necessary since RTD does not issue `sphinx-apidoc` before running
@@ -45,7 +45,6 @@ except ImportError:
 
 # for jsim
 jsim_dir = os.path.join(__location__, "../src/jsim")
-examples_dir = os.path.join(__location__, "../examples")
 
 def generate(out_name, code_dir):
     output_dir = os.path.join(__location__, out_name)
@@ -70,7 +69,6 @@ def generate(out_name, code_dir):
         print("Running `sphinx-apidoc` failed!\n{}".format(e))
 
 generate("api", jsim_dir)
-generate("examples", examples_dir)
 
 # -- General configuration ---------------------------------------------------
 
@@ -90,7 +88,8 @@ extensions = [
     "sphinx.ext.ifconfig",
     "sphinx.ext.mathjax",
     "sphinx.ext.napoleon",
-    "sphinx_rtd_theme"
+    "sphinx_rtd_theme",
+    "nbsphinx"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -160,7 +159,7 @@ release = version
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", ".venv"]
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", ".venv", "**.ipynb_checkpoints"]
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 # default_role = None
