@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [0.0.7] - 2021-12-04
 
+### Bug Fixes
+
+- Pandoc was required for CI doctests and doc building
+
 ### Documentation
 
 - Added capability to include jupyter notebooks in docs incl output
