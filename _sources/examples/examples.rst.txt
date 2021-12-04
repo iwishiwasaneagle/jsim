@@ -1,0 +1,12 @@
+examples namespace
+==================
+
+.. py:module:: examples
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   examples.potential
