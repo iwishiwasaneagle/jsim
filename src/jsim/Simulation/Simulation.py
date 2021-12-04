@@ -10,8 +10,6 @@ from abc import ABC, abstractmethod
 from loguru import logger
 from tqdm import tqdm
 
-from jsim.Agent import Agent
-from jsim.Environment import Environment
 from jsim.Meta import Action, State
 
 
@@ -21,21 +19,18 @@ class Simulation(ABC):
     agent and an environment instances at the moment of creation.
     """
 
-    def __init__(self, pa: Agent, pe: Environment, dt=0.1) -> None:
+    def __init__(self) -> None:
         """
         Initializes the simulation instance, the agent, and the environment.
         `reset` is called after initializing the aforementioned classes.
 
-        :param pa: The agent to initialize with the simulation
-        :type pa: Agent
-        :param pe: The environment to initialize with the simulation
-        :type pe: Environment
+        Example:
+
+        .. code-block::
+
+            self.env: Environment = pe(self)
+            self.agent: Agent = pa(self, self.env)
         """
-        self.dt = dt
-
-        self.env: Environment = pe(self)
-        self.agent: Agent = pa(self, self.env)
-
         self.reset()
 
     @abstractmethod
