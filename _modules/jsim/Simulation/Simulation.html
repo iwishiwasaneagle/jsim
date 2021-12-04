@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>jsim.Simulation.Simulation &mdash; jsim 0.0.6 documentation</title>
+  <title>jsim.Simulation.Simulation &mdash; jsim 0.0.1 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -14,6 +14,7 @@
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -27,7 +28,7 @@
             <a href="../../../index.html" class="icon icon-home"> jsim
           </a>
               <div class="version">
-                0.0.6
+                0.0.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
@@ -45,7 +46,7 @@
 <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">jsim</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../examples/modules.html">examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Misc.</span></p>
 <ul>
@@ -91,8 +92,6 @@
 <span class="kn">from</span> <span class="nn">loguru</span> <span class="kn">import</span> <span class="n">logger</span>
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
-<span class="kn">from</span> <span class="nn">jsim.Agent</span> <span class="kn">import</span> <span class="n">Agent</span>
-<span class="kn">from</span> <span class="nn">jsim.Environment</span> <span class="kn">import</span> <span class="n">Environment</span>
 <span class="kn">from</span> <span class="nn">jsim.Meta</span> <span class="kn">import</span> <span class="n">Action</span><span class="p">,</span> <span class="n">State</span>
 
 
@@ -102,21 +101,18 @@
 <span class="sd">    agent and an environment instances at the moment of creation.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pa</span><span class="p">:</span> <span class="n">Agent</span><span class="p">,</span> <span class="n">pe</span><span class="p">:</span> <span class="n">Environment</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializes the simulation instance, the agent, and the environment.</span>
 <span class="sd">        `reset` is called after initializing the aforementioned classes.</span>
 
-<span class="sd">        :param pa: The agent to initialize with the simulation</span>
-<span class="sd">        :type pa: Agent</span>
-<span class="sd">        :param pe: The environment to initialize with the simulation</span>
-<span class="sd">        :type pe: Environment</span>
+<span class="sd">        Example:</span>
+
+<span class="sd">        .. code-block::</span>
+
+<span class="sd">            self.env: Environment = pe(self)</span>
+<span class="sd">            self.agent: Agent = pa(self, self.env)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dt</span> <span class="o">=</span> <span class="n">dt</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">:</span> <span class="n">Environment</span> <span class="o">=</span> <span class="n">pe</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="p">:</span> <span class="n">Agent</span> <span class="o">=</span> <span class="n">pa</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">)</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Simulation.reset"><a class="viewcode-back" href="../../../api/jsim.Simulation.html#jsim.Simulation.Simulation.Simulation.reset">[docs]</a>    <span class="nd">@abstractmethod</span>

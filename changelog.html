@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelog &mdash; jsim 0.0.6 documentation</title>
+  <title>Changelog &mdash; jsim 0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -15,11 +15,12 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="License" href="license.html" />
-    <link rel="prev" title="examples.potential package" href="examples/examples.potential.html" /> 
+    <link rel="prev" title="Potential Navigation" href="examples/Potential.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -30,7 +31,7 @@
             <a href="index.html" class="icon icon-home"> jsim
           </a>
               <div class="version">
-                0.0.6
+                0.0.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -48,42 +49,48 @@
 <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/modules.html">jsim</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples/modules.html">examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Misc.</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">[0.0.6] - 2021-12-04</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">[0.0.7] - 2021-12-04</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#bug-fixes">Bug Fixes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#documentation">Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#refactor">Refactor</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">[0.0.5] - 2021-12-03</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">[0.0.6] - 2021-12-04</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id3">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">[0.0.5] - 2021-12-03</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Bug Fixes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#features">Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#refactor">Refactor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Refactor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#testing">Testing</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">[0.0.4] - 2021-12-01</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id5">Bug Fixes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">Documentation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#miscellaneous-tasks">Miscellaneous Tasks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">Refactor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">Testing</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#id9">[0.0.3] - 2021-11-30</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id8">[0.0.4] - 2021-12-01</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Bug Fixes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id10">Documentation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miscellaneous-tasks">Miscellaneous Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Refactor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Testing</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id12">[0.0.1] - 2021-11-30</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id13">Bug Fixes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#docs">Docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">[0.0.3] - 2021-11-30</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id14">Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id16">[0.0.1] - 2021-11-30</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id17">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docs">Docs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">Documentation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#feat">Feat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">Features</a></li>
 </ul>
 </li>
 </ul>
@@ -116,29 +123,75 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="changelog">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="changelog">
 <h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline"></a></h1>
 <p>All notable changes to this project will be documented in this file.</p>
 <section id="id1">
-<h2>[0.0.6] - 2021-12-04<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<h2>[0.0.7] - 2021-12-04<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <section id="bug-fixes">
 <h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline"></a></h3>
 <ul class="simple">
-<li><p>Imports where to module, not the actual classes</p></li>
-<li><p>Circular dependcy error</p></li>
+<li><p>Pandoc was required for CI doctests and doc building</p></li>
 </ul>
 </section>
 <section id="documentation">
 <h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline"></a></h3>
 <ul class="simple">
-<li><p>New RTD theme with better layout</p></li>
+<li><p>Added capability to include jupyter notebooks in docs incl output</p></li>
+<li><p>Local Hill Climb and Potential-based navigation as jupyter notebooks</p></li>
+</ul>
+</section>
+<section id="refactor">
+<h3>Refactor<a class="headerlink" href="#refactor" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>User defines where env and agent get initialized</p></li>
 </ul>
 </section>
 </section>
 <section id="id2">
-<h2>[0.0.5] - 2021-12-03<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>[0.0.6] - 2021-12-04<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <section id="id3">
 <h3>Bug Fixes<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Imports where to module, not the actual classes</p></li>
+<li><p>Circular dependcy error</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>Documentation<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>New RTD theme with better layout</p></li>
+</ul>
+</section>
+</section>
+<section id="id5">
+<h2>[0.0.5] - 2021-12-03<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
+<section id="id6">
+<h3>Bug Fixes<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>Pass psim to env as outlined in docs</p></li>
 <li><p>Frozen set of requirements which will help with dependabot security advice</p></li>
@@ -153,8 +206,8 @@
 <li><p>Add learn function to the Agent (#5)</p></li>
 </ul>
 </section>
-<section id="refactor">
-<h3>Refactor<a class="headerlink" href="#refactor" title="Permalink to this headline"></a></h3>
+<section id="id7">
+<h3>Refactor<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>Start_trial renamed to reset (#8)</p></li>
 <li><p>Rename sensation to state (#11)</p></li>
@@ -171,17 +224,17 @@
 </ul>
 </section>
 </section>
-<section id="id4">
-<h2>[0.0.4] - 2021-12-01<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
-<section id="id5">
-<h3>Bug Fixes<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<section id="id8">
+<h2>[0.0.4] - 2021-12-01<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h2>
+<section id="id9">
+<h3>Bug Fixes<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>Prevent pre-commit from running. Was causing the script to fail. The assumption is that pre-commit has been run already</p></li>
 <li><p>Prevent pre-commit from running. Was causing the script to fail. The assumption is that pre-commit has been run already</p></li>
 </ul>
 </section>
-<section id="id6">
-<h3>Documentation<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<section id="id10">
+<h3>Documentation<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>Outline the Agent class skeleton alongside docstrings</p></li>
 <li><p>Give credit to Richard S. Sutton and Juan Carlos Santamaria</p></li>
@@ -210,15 +263,15 @@
 <li><p>Ignore F401 errors in <strong>init</strong>.py</p></li>
 </ul>
 </section>
-<section id="id7">
-<h3>Refactor<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<section id="id11">
+<h3>Refactor<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">abc</span></code> rather than manually raisingin NotImplementedError</p></li>
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">abc</span></code> rather than manually raisingin NotImplementedError</p></li>
 </ul>
 </section>
-<section id="id8">
-<h3>Testing<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<section id="id12">
+<h3>Testing<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>Add skeleton for testing of new modules</p></li>
 <li><p>Test if the proper methods are abstract via sets</p></li>
@@ -230,25 +283,25 @@
 </ul>
 </section>
 </section>
-<section id="id9">
-<h2>[0.0.3] - 2021-11-30<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h2>
-<section id="id10">
-<h3>Documentation<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<section id="id13">
+<h2>[0.0.3] - 2021-11-30<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h2>
+<section id="id14">
+<h3>Documentation<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>Update link to changelog</p></li>
 </ul>
 </section>
-<section id="id11">
-<h3>Testing<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+<section id="id15">
+<h3>Testing<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>Update testing dependencies</p></li>
 </ul>
 </section>
 </section>
-<section id="id12">
-<h2>[0.0.1] - 2021-11-30<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h2>
-<section id="id13">
-<h3>Bug Fixes<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
+<section id="id16">
+<h2>[0.0.1] - 2021-11-30<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h2>
+<section id="id17">
+<h3>Bug Fixes<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>Requirements auto installed when tox is run</p></li>
 </ul>
@@ -259,8 +312,8 @@
 <li><p>Add section on contributing to README.md</p></li>
 </ul>
 </section>
-<section id="id14">
-<h3>Documentation<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h3>
+<section id="id18">
+<h3>Documentation<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>Encode version number into build files</p></li>
 </ul>
@@ -271,8 +324,8 @@
 <li><p>Use git-cliff to automate changelogs</p></li>
 </ul>
 </section>
-<section id="id15">
-<h3>Features<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
+<section id="id19">
+<h3>Features<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>Upload wheel and sdist to release</p></li>
 </ul>
@@ -284,7 +337,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="examples/examples.potential.html" class="btn btn-neutral float-left" title="examples.potential package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples/Potential.html" class="btn btn-neutral float-left" title="Potential Navigation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="license.html" class="btn btn-neutral float-right" title="License" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -6,7 +6,7 @@ Simulation environmentfor SAR
 Using this package
 ------------------
 
-:doc:`overview <readme>`
+:doc:`Overview <readme>`
     Overview of this package.
 
 :doc:`Module reference <api/modules>`
@@ -17,7 +17,7 @@ Using this package
 :doc:`changelog`
     The development changelog.
 
-:doc:`Examples <examples/modules>`
+:doc:`examples`
     The example scripts made using this packages.
 
 .. toctree::
@@ -33,7 +33,7 @@ Using this package
    :hidden:
 
    api/modules
-   examples/modules
+   examples
 
 .. toctree::
    :caption: Misc.
