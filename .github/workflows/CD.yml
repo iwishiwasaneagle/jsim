@@ -39,7 +39,7 @@ jobs:
           fi
   generate-changelog:
     name: Generate changelog
-    needs: setup-env
+    needs: setup-envs
     runs-on: ubuntu-20.04
     outputs:
       release_body: ${{ steps.release.outputs.release_body }}
@@ -69,7 +69,7 @@ jobs:
 
   build-python:
     name: Build python
-    needs: setup-env
+    needs: setup-envs
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
@@ -91,7 +91,7 @@ jobs:
 
   publish-github:
     name: Publish on GitHub
-    needs: [generate-changelog,build-python, setup-env]
+    needs: [generate-changelog,build-python, setup-envs]
     runs-on: ubuntu-20.04
 
     steps:
@@ -114,7 +114,7 @@ jobs:
 
   publish-gh-page:
     name: Publish to Github Pages
-    needs: setup-env
+    needs: setup-envs
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
