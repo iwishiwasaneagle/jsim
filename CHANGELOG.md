@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.8] - 2021-12-15
+
+### Bug Fixes
+
+- Not having pre-commit in path was causing errors with release.sh script
+
+### Features
+
+- Working linear kernel example of LHC_GW_CONV
+- Configure dependabot correctly (#16) (#18)
+
+### Miscellaneous Tasks
+
+- Added scipy
+- Added scipy
+- Bump fonttools from 4.28.3 to 4.28.4 (#21)
+- Bump matplotlib from 3.5.0 to 3.5.1 (#20)
+- Bump pre-commit from 2.15.0 to 2.16.0 (#19)
+- Bump tomli from 1.2.2 to 2.0.0 (#22)
+- Bump distlib from 0.3.3 to 0.3.4 (#23)
+
+### Styling
+
+- Ensure jupyter notebooks are uploaded without output
+
 ## [0.0.7] - 2021-12-04
 
 ### Bug Fixes
