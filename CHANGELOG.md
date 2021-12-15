@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.9] - 2021-12-15
+
+### Bug Fixes
+
+- Push master before tag to ensure CHANGELOG.md is on github when release is crafted
+- Cite Lin et al. for the algorithm (#24)
+
 ## [0.0.8] - 2021-12-15
 
 ### Bug Fixes
