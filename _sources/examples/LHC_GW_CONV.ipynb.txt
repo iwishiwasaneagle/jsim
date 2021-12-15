@@ -7,7 +7,9 @@
    "source": [
     "# LHC_GW_CONV\n",
     "\n",
-    "Local Hill Climb search algorithm implemented in a discrete environment.\n"
+    "Local Hill Climb Global Warming Convolution[1] search algorithm implemented in a discrete environment using jsim.\n",
+    "\n",
+    "[1] L. Lin and M. A. Goodrich, ‘UAV intelligent path planning for wilderness search and rescue’, 2009 IEEE/RSJ International Conference on Intelligent Robots and Systems, IROS 2009, vol. 0, no. 1, pp. 709–714, 2009, doi: [10.1109/IROS.2009.5354455.](https://doi.org/10.1109/IROS.2009.5354455)"
    ]
   },
   {
@@ -560,7 +562,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.9.7"
+   "version": "3.9.9"
   }
  },
  "nbformat": 4,
