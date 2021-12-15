@@ -34,14 +34,14 @@ repos:
   - id: isort
 
 - repo: https://github.com/psf/black
-  rev: 21.11b1
+  rev: 21.12b0
   hooks:
   - id: black
     language_version: python3
 
 # If like to embrace black styles even in the docs:
 - repo: https://github.com/asottile/blacken-docs
-  rev: v1.11.0
+  rev: v1.12.0
   hooks:
   - id: blacken-docs
     additional_dependencies: [black]
@@ -56,3 +56,11 @@ repos:
     ]
   ## You can add flake8 plugins via `additional_dependencies`:
   #  additional_dependencies: [flake8-bugbear]
+- repo: local
+  hooks:
+  - id: jupyter-nb-clear-output
+    name: jupyter-nb-clear-output
+    files: \.ipynb$
+    stages: [ commit ]
+    language: system
+    entry: jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace
