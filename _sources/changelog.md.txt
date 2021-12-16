@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.11] - 2021-12-16
+
+### Documentation
+
+- Images for docs and readme
+- Use banner in docs
+- Use docs/_static/banner.png in master branch in readme
+
+### Miscellaneous Tasks
+
+- Clicking readme logo directs to this repo
+
 ## [0.0.10] - 2021-12-16
 
 ### Bug Fixes

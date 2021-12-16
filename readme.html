@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>jSim &mdash; jsim 0.0.10 documentation</title>
+  <title>Installation &mdash; jsim 0.0.11 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -29,9 +29,10 @@
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
             <a href="index.html" class="icon icon-home"> jsim
+            <img src="_static/banner_nobg.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                0.0.10
+                0.0.11
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -43,14 +44,11 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#docs">Docs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#making-changes-contributing">Making Changes &amp; Contributing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#docs">Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#making-changes-contributing">Making Changes &amp; Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#references">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
@@ -79,7 +77,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>jSim</li>
+      <li>Installation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/readme.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -113,29 +111,28 @@
     text-align: unset;
 }
 </style>
-<section id="jsim">
-<h1>jSim<a class="headerlink" href="#jsim" title="Permalink to this headline"></a></h1>
+<p><a class="reference external" href="https://github.com/iwishiwasaneagle/jsim"><img alt="jSim" src="https://raw.githubusercontent.com/iwishiwasaneagle/jsim/master/docs/_static/banner.png" /></a></p>
 <p><a class="reference external" href="https://github.com/iwishiwasaneagle/jsim/actions/workflows/CI.yml"><img alt="CI" src="https://github.com/iwishiwasaneagle/jsim/actions/workflows/CI.yml/badge.svg" /></a>
 <a class="reference external" href="https://github.com/iwishiwasaneagle/jsim/actions/workflows/CD.yml"><img alt="CD" src="https://github.com/iwishiwasaneagle/jsim/actions/workflows/CD.yml/badge.svg" /></a>
 <a class="reference external" href="https://github.com/iwishiwasaneagle/jsim/blob/master/LICENSE.txt"><img alt="GitHub" src="https://img.shields.io/github/license/iwishiwasaneagle/jsim" /></a></p>
 <p>SAR is a unique design problem for path planning with little exposure to research. The search planning is highly dependent on the environment, and what it contains. Many papers use Probability Distribution Maps (PDMs) to inform the algorithms to make better paths since less time taken to find a missing person means higher chance of survivability.</p>
 <p>This simulation environment is built to accommodate my research into this topic but anyone interested is more than welcome to help me build it.</p>
 <section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h2>
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install git+https://github.com/iwishiwasaneagle/jsim.git
 </pre></div>
 </div>
 </section>
 <section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h2>
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">Agent</span></code>, <code class="docutils literal notranslate"><span class="pre">Simulation</span></code>, and <code class="docutils literal notranslate"><span class="pre">Environment</span></code> are designed to be used as base classes. The developer must extend them as required. Have a look at the <a class="reference external" href="https://http://jsim.janhendrikewers.uk/examples/">examples</a> for more insight.</p>
 </section>
 <section id="docs">
-<h2>Docs<a class="headerlink" href="#docs" title="Permalink to this headline"></a></h2>
+<h1>Docs<a class="headerlink" href="#docs" title="Permalink to this headline"></a></h1>
 <p>Build yourself with <code class="docutils literal notranslate"><span class="pre">tox</span> <span class="pre">-e</span> <span class="pre">docs</span></code> or visit the <a class="reference external" href="https://http://jsim.janhendrikewers.uk/">hosted docs</a></p>
 </section>
 <section id="making-changes-contributing">
-<h2>Making Changes &amp; Contributing<a class="headerlink" href="#making-changes-contributing" title="Permalink to this headline"></a></h2>
+<h1>Making Changes &amp; Contributing<a class="headerlink" href="#making-changes-contributing" title="Permalink to this headline"></a></h1>
 <p>This project uses <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code>, please make sure to install it before making any changes:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install pre-commit
 <span class="nb">cd</span> jsim
@@ -148,11 +145,10 @@ pre-commit install
 </div>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h2>
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h1>
 <ul class="simple">
 <li><p>Architecture heavily inspired by <a class="reference external" href="http://incompleteideas.net/RLinterface/RLI-Cplusplus.html">http://incompleteideas.net/RLinterface/RLI-Cplusplus.html</a></p></li>
 </ul>
-</section>
 </section>
 
 
