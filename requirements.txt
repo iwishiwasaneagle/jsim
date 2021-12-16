@@ -15,6 +15,7 @@ Pillow==8.4.0
 platformdirs==2.4.0
 pluggy==1.0.0
 py==1.11.0
+pydantic==1.8.2
 pyparsing==3.0.6
 PyQt5==5.15.6
 PyQt5-Qt5==5.15.2
@@ -22,10 +23,8 @@ PyQt5-sip==12.9.0
 python-dateutil==2.8.2
 PyYAML==6.0
 scipy==1.7.3
-setuptools-scm==6.3.2
 six==1.16.0
 toml==0.10.2
 tomli==2.0.0
 tox==3.24.4
 tqdm==4.62.3
-virtualenv==20.10.0
