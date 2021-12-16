@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.10] - 2021-12-16
+
+### Bug Fixes
+
+- Pre-commit should not be bundled with the package
+
+### Documentation
+
+- Add bare-minimum install and usage instructions
+- Update the way the build system handles versioning (#25)
+
 ## [0.0.9] - 2021-12-15
 
 ### Bug Fixes
