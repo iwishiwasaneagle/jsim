@@ -57,7 +57,7 @@ def generate(out_name, code_dir):
     try:
         import sphinx
 
-        cmd_line = f"sphinx-apidoc --implicit-namespaces -f -o {output_dir} {code_dir}"
+        cmd_line = f"sphinx-apidoc --implicit-namespaces -M -e -f -o {output_dir} {code_dir}"
 
         args = cmd_line.split(" ")
         if tuple(sphinx.__version__.split(".")) >= ("1", "7"):
