@@ -63,7 +63,7 @@ jobs:
       if: steps.cache-venv-tests.outputs.cache-hit != 'true'
 
     - name: Test with tox
-      run: tox -e doctests,linkcheck
+      run: tox -e doctests
 
 
   run-examples:
