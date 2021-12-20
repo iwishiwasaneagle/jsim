@@ -28,7 +28,6 @@ jobs:
           ${{ runner.os }}-tox-tests
 
     - run: pip install tox
-      if: steps.cache-tox-tests.outputs.cache-hit != 'true'
 
     - name: Test with tox
       run: tox
@@ -60,7 +59,6 @@ jobs:
     - run: sudo apt-get install pandoc
 
     - run: pip install tox
-      if: steps.cache-venv-tests.outputs.cache-hit != 'true'
 
     - name: Test with tox
       run: tox -e doctests
