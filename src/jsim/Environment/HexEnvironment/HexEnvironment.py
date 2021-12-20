@@ -192,8 +192,8 @@ class HexEnvironment(Environment, ABC):
         :return: The resultant pixel coordinate
         :rtype: PixelCoord
         """
-        x = size * ((np.sqrt(3) / 2) * axial.r + np.sqrt(3) * axial.q)
-        y = size * ((3.0 / 2) * axial.r)
+        x = size * (3 / 2) * axial.q
+        y = size * ((np.sqrt(3) / 2) * axial.q + np.sqrt(3) * axial.r)
         return PixelCoord(x=x, y=y)
 
     @staticmethod
