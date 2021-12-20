@@ -79,16 +79,23 @@ def test_axial_to_pixel(test, expected):
 @pytest.mark.parametrize(
     "test,expected",
     [
-        ((-2, -3), (-3, -np.sqrt(3))),
-        ((-1, -2), (-1.5, -np.sqrt(3) / 2)),
-        ((0, 0), (0, 0)),
-        ((1, 1), (1.5, np.sqrt(3) / 2)),
+        ((-4, 1.0), (-3.464, 1.000)),
+        ((-3, -6.0), (-2.598, -5.500)),
+        ((-5, -8.0), (-4.330, -7.500)),
+        ((4, 4.0), (3.464, 4.000)),
+        ((3, 3.0), (2.598, 3.500)),
+        ((-5, -1.0), (-4.330, -0.500)),
+        ((3, -2.0), (2.598, -1.500)),
     ],
 )
 def test_offset_to_pixel(test, expected):
-    assert HexEnvironment.offset_to_pixel(
+    t = HexEnvironment.offset_to_pixel(
         OffsetCoord(col=test[0], row=test[1]), np.sqrt(1 / 3)
-    ) == PixelCoord(x=expected[0], y=expected[1])
+    )
+    e = PixelCoord(x=expected[0], y=expected[1])
+
+    assert pytest.approx(t.x, 0.001) == e.x
+    assert pytest.approx(t.y, 0.001) == e.y
 
 
 @pytest.mark.parametrize(
