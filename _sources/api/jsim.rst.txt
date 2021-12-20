@@ -1,6 +1,11 @@
 jsim package
 ============
 
+.. automodule:: jsim
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Subpackages
 -----------
 
@@ -11,11 +16,3 @@ Subpackages
    jsim.Environment
    jsim.Meta
    jsim.Simulation
-
-Module contents
----------------
-
-.. automodule:: jsim
-   :members:
-   :undoc-members:
-   :show-inheritance:

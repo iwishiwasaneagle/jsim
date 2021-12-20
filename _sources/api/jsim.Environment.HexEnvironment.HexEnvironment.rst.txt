@@ -1,0 +1,7 @@
+jsim.Environment.HexEnvironment.HexEnvironment module
+=====================================================
+
+.. automodule:: jsim.Environment.HexEnvironment.HexEnvironment
+   :members:
+   :undoc-members:
+   :show-inheritance:

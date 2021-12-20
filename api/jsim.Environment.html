@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>jsim.Environment package &mdash; jsim 0.0.11 documentation</title>
+  <title>jsim.Environment package &mdash; jsim 0.0.12 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="jsim.Meta package" href="jsim.Meta.html" />
-    <link rel="prev" title="jsim.Agent package" href="jsim.Agent.html" /> 
+    <link rel="next" title="jsim.Environment.HexEnvironment package" href="jsim.Environment.HexEnvironment.html" />
+    <link rel="prev" title="jsim.Agent.Agent module" href="jsim.Agent.Agent.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -32,7 +32,7 @@
             <img src="../_static/banner_nobg.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                0.0.11
+                0.0.12
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -62,7 +62,6 @@
 <li class="toctree-l4"><a class="reference internal" href="jsim.Simulation.html">jsim.Simulation package</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="jsim.html#module-jsim">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -126,70 +125,37 @@
     text-align: unset;
 }
 </style>
-<section id="jsim-environment-package">
-<h1>jsim.Environment package<a class="headerlink" href="#jsim-environment-package" title="Permalink to this headline"></a></h1>
+<section id="module-jsim.Environment">
+<span id="jsim-environment-package"></span><h1>jsim.Environment package<a class="headerlink" href="#module-jsim.Environment" title="Permalink to this headline"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="jsim.Environment.HexEnvironment.html">jsim.Environment.HexEnvironment package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="jsim.Environment.HexEnvironment.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="jsim.Environment.HexEnvironment.HexCoords.html">jsim.Environment.HexEnvironment.HexCoords package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="jsim.Environment.HexEnvironment.HexCoords.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="jsim.Environment.HexEnvironment.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="jsim.Environment.HexEnvironment.HexDirections.html">jsim.Environment.HexEnvironment.HexDirections module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jsim.Environment.HexEnvironment.HexEnvironment.html">jsim.Environment.HexEnvironment.HexEnvironment module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
-</section>
-<section id="module-jsim.Environment.Environment">
-<span id="jsim-environment-environment-module"></span><h2>jsim.Environment.Environment module<a class="headerlink" href="#module-jsim.Environment.Environment" title="Permalink to this headline"></a></h2>
-<p>The environment defines the problem to be solved. It determines the dynamics of the
-environment, the rewards, and the trial terminations.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="jsim.Environment.Environment.Environment">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">jsim.Environment.Environment.</span></span><span class="sig-name descname"><span class="pre">Environment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="jsim.Simulation.html#jsim.Simulation.Simulation.Simulation" title="jsim.Simulation.Simulation.Simulation"><span class="pre">jsim.Simulation.Simulation.Simulation</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/jsim/Environment/Environment.html#Environment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#jsim.Environment.Environment.Environment" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.8/library/abc.html#abc.ABC" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
-<p>Base class of all environments. Specific environments are instances of subclassed
-derived from here.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="jsim.Environment.Environment.Environment.reset">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="jsim.Meta.html#jsim.Meta.State.State" title="jsim.Meta.State.State"><span class="pre">jsim.Meta.State.State</span></a></span></span><a class="reference internal" href="../_modules/jsim/Environment/Environment.html#Environment.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#jsim.Environment.Environment.Environment.reset" title="Permalink to this definition"></a></dt>
-<dd><p>This function must be provided by the user for their specialized environment.
-Called at the beginning of a new trial and should perform any needed
-initialization of the environment to prepare for a new trial.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>First state of the trial</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="jsim.Meta.html#jsim.Meta.State.State" title="jsim.Meta.State.State">State</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="jsim.Environment.Environment.Environment.step">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="jsim.Meta.html#jsim.Meta.Action.Action" title="jsim.Meta.Action.Action"><span class="pre">jsim.Meta.Action.Action</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="jsim.Meta.html#jsim.Meta.State.State" title="jsim.Meta.State.State"><span class="pre">jsim.Meta.State.State</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#float" title="(in Python v3.8)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/jsim/Environment/Environment.html#Environment.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#jsim.Environment.Environment.Environment.step" title="Permalink to this definition"></a></dt>
-<dd><p>Must be provided by the user for their specialized environment. Called once
-every simulation step and causes the environment to undergo a transition
-from its current state to a next state dependent on the action taken by <cite>pa</cite>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If the environment transitions into a terminal state, the returned state
-will have a special value of 0</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>pa</strong> (<a class="reference internal" href="jsim.Meta.html#jsim.Meta.Action.Action" title="jsim.Meta.Action.Action"><em>Action</em></a>) – The action to be taken by the <code class="xref py py-class docutils literal notranslate"><span class="pre">Agent</span></code></p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p>state - The next state due to action <cite>pa</cite></p></li>
-<li><p>reward - The payoff for the state transition due to action <cite>pa</cite></p></li>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="jsim.Environment.Environment.html">jsim.Environment.Environment module</a></li>
 </ul>
-</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Tuple[<a class="reference internal" href="jsim.Meta.html#jsim.Meta.State.State" title="jsim.Meta.State.State">State</a>, <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#float" title="(in Python v3.8)">float</a>]</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="module-jsim.Environment">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-jsim.Environment" title="Permalink to this headline"></a></h2>
+</div>
 </section>
 </section>
 
@@ -197,8 +163,8 @@ will have a special value of 0</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="jsim.Agent.html" class="btn btn-neutral float-left" title="jsim.Agent package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="jsim.Meta.html" class="btn btn-neutral float-right" title="jsim.Meta package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="jsim.Agent.Agent.html" class="btn btn-neutral float-left" title="jsim.Agent.Agent module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="jsim.Environment.HexEnvironment.html" class="btn btn-neutral float-right" title="jsim.Environment.HexEnvironment package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

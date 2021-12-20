@@ -3,6 +3,7 @@
 [![CI](https://github.com/iwishiwasaneagle/jsim/actions/workflows/CI.yml/badge.svg)](https://github.com/iwishiwasaneagle/jsim/actions/workflows/CI.yml)
 [![CD](https://github.com/iwishiwasaneagle/jsim/actions/workflows/CD.yml/badge.svg)](https://github.com/iwishiwasaneagle/jsim/actions/workflows/CD.yml)
 [![GitHub](https://img.shields.io/github/license/iwishiwasaneagle/jsim)](https://github.com/iwishiwasaneagle/jsim/blob/master/LICENSE.txt)
+[![codecov](https://codecov.io/gh/iwishiwasaneagle/jsim/branch/master/graph/badge.svg?token=0X0UFKI79W)](https://codecov.io/gh/iwishiwasaneagle/jsim)
 
 SAR is a unique design problem for path planning with little exposure to research. The search planning is highly dependent on the environment, and what it contains. Many papers use Probability Distribution Maps (PDMs) to inform the algorithms to make better paths since less time taken to find a missing person means higher chance of survivability.
 

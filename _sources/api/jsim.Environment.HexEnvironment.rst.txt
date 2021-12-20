@@ -1,0 +1,24 @@
+jsim.Environment.HexEnvironment package
+=======================================
+
+.. automodule:: jsim.Environment.HexEnvironment
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   jsim.Environment.HexEnvironment.HexCoords
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   jsim.Environment.HexEnvironment.HexDirections
+   jsim.Environment.HexEnvironment.HexEnvironment

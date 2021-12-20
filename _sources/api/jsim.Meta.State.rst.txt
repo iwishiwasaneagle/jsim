@@ -1,0 +1,7 @@
+jsim.Meta.State module
+======================
+
+.. automodule:: jsim.Meta.State
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+jsim.Environment.HexEnvironment.HexCoords.AxialCoord module
+===========================================================
+
+.. automodule:: jsim.Environment.HexEnvironment.HexCoords.AxialCoord
+   :members:
+   :undoc-members:
+   :show-inheritance:

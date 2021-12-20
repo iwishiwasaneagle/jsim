@@ -1,21 +1,23 @@
 jsim.Environment package
 ========================
 
-Submodules
-----------
-
-jsim.Environment.Environment module
------------------------------------
-
-.. automodule:: jsim.Environment.Environment
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Module contents
----------------
-
 .. automodule:: jsim.Environment
    :members:
    :undoc-members:
    :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   jsim.Environment.HexEnvironment
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   jsim.Environment.Environment

@@ -1,21 +1,15 @@
 jsim.Simulation package
 =======================
 
-Submodules
-----------
-
-jsim.Simulation.Simulation module
----------------------------------
-
-.. automodule:: jsim.Simulation.Simulation
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Module contents
----------------
-
 .. automodule:: jsim.Simulation
    :members:
    :undoc-members:
    :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   jsim.Simulation.Simulation

@@ -1,0 +1,7 @@
+jsim.Environment.HexEnvironment.HexCoords.PixelCoord module
+===========================================================
+
+.. automodule:: jsim.Environment.HexEnvironment.HexCoords.PixelCoord
+   :members:
+   :undoc-members:
+   :show-inheritance:

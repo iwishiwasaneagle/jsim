@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.12] - 2021-12-20
+
+### Documentation
+
+- CLI flags to make the submodule/subpackage a bit nicer to view
+- Package requirements needed for doctest
+
+### Features
+
+- New HexEnvironment to enable hexagonal tiled simulations
+
+### Miscellaneous Tasks
+
+- Add pydantic 1.8.2 to requirements
+
+### Testing
+
+- Code coverage via tox and uploaded to CodeCov
+- Tests specific requirements file rather than forcing tox to handle it
+- Codecov coverage badge in readme
+- Adjusted axial_to_pixel testto use pointy-top rather than flat
+
 ## [0.0.11] - 2021-12-16
 
 ### Documentation
