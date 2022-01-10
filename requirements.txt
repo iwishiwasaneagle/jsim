@@ -11,7 +11,7 @@ matplotlib==3.5.1
 nodeenv==1.6.0
 numpy==1.21.5
 packaging==21.3
-Pillow==8.4.0
+Pillow==9.0.0
 platformdirs==2.4.1
 pluggy==1.0.0
 py==1.11.0
