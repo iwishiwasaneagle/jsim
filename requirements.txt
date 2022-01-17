@@ -15,7 +15,7 @@ Pillow==9.0.0
 platformdirs==2.4.1
 pluggy==1.0.0
 py==1.11.0
-pydantic==1.8.2
+pydantic==1.9.0
 pyparsing==3.0.6
 PyQt5==5.15.6
 PyQt5-Qt5==5.15.2
