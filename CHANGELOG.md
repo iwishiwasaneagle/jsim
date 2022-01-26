@@ -2,6 +2,53 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.13] - 2022-01-26
+
+### Bug Fixes
+
+- Updated python version
+- Ignore imports (mypy)
+- Mock pydantic in docs
+- Mypy typing issues
+- Added virtualenv back for tox
+- Need to install reqs to run jupyter docs
+
+### Documentation
+
+- Example formatting in HexEnvironment.py
+
+### Features
+
+- Q-Learning hex environment example
+- Q-Learning hex environment example completed. Results dubious
+- Dev requirements
+- Type checking with mypy
+
+### Miscellaneous Tasks
+
+- Cache tox and pip in CI (#36)
+- Bump fonttools from 4.28.4 to 4.28.5 (#34)
+- Bump numpy from 1.21.4 to 1.21.5 (#35)
+- Bump tox from 3.24.4 to 3.24.5 (#42)
+- Bump virtualenv from 20.10.0 to 20.11.1 (#41)
+- Bump identify from 2.4.0 to 2.4.1 (#39)
+- Bump filelock from 3.4.0 to 3.4.2 (#37)
+- Bump platformdirs from 2.4.0 to 2.4.1 (#38)
+- Bump identify from 2.4.1 to 2.4.2 (#49)
+- Bump pillow from 8.4.0 to 9.0.0 (#47)
+- Bump virtualenv from 20.11.1 to 20.13.0 (#46)
+- Bump identify from 2.4.2 to 2.4.4 (#51)
+- Bump pydantic from 1.8.2 to 1.9.0 (#48)
+- Bump codecov/codecov-action from 1 to 2.1.0 (#54)
+
+### Performance
+
+- 1 trial in doctests for HexQLearning Example
+
+### Refactor
+
+- Types and default envs in one block
+
 ## [0.0.12] - 2021-12-20
 
 ### Documentation
