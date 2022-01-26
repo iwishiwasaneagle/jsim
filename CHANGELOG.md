@@ -2,7 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.0.13+r1] - 2022-01-26
+## [0.0.13+r2] - 2022-01-26
+
+### Bug Fixes
+
+- Never stored long_term_ds
 
 ### Performance
 
