@@ -53,7 +53,7 @@ class Agent(ABC):
         """
         self.state = copy(ps)
 
-        return self.state, self.policy
+        return self.policy(ps), self.state
 
     @abstractmethod
     def step(self, ps: State, pa: Action, pnext_s: State, reward: float) -> Action:

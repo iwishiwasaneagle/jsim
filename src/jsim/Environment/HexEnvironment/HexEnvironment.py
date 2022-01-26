@@ -1,11 +1,11 @@
 from abc import ABC
-from typing import List, Tuple
+from typing import List, Optional, Tuple
 
 import matplotlib as mpl
 import matplotlib.patches as patches
 import numpy as np
 
-from jsim.Environment import Environment
+from jsim.Environment.Environment import Environment
 from jsim.Environment.HexEnvironment.HexCoords import (
     AxialCoord,
     OffsetCoord,
@@ -50,18 +50,19 @@ class HexEnvironment(Environment, ABC):
         into matplotlib patches that can plotted.
 
         Example:
-            .. code-block::
-                import matplotlib as mpl
-                import matplotlib.pyplot as plt
-                from jsim.Environment import HexEnvironment
+            .. code-block:: python
 
-                hex = HexEnvironment()
-                fig, ax = plt.subplots(1)
-                ax.set_aspect('equal')
-                for p in hex.as_mpl_polygons(mpl.cm.get_cmap('gray')):
-                    ax.add_patch(p)
-                plt.autoscale(enable=True)
-                plt.show()
+               import matplotlib as mpl
+               import matplotlib.pyplot as plt
+               from jsim.Environment import HexEnvironment
+
+               hex = HexEnvironment()
+               fig, ax = plt.subplots(1)
+               ax.set_aspect("equal")
+               for p in hex.as_mpl_polygons(mpl.cm.get_cmap("gray")):
+                   ax.add_patch(p)
+               plt.autoscale(enable=True)
+               plt.show()
 
         :param cmap: Color map to be used (default = 'Spectral')
         :type cmap: matplotlib.colors.LinearSegmentedColormap
@@ -85,7 +86,7 @@ class HexEnvironment(Environment, ABC):
     @staticmethod
     def offsets_to_mpl_polygons(
         offsets: List[OffsetCoord],
-        colors: List[Tuple[float, float, float, float]] = None,
+        colors: List[Optional[Tuple[float, float, float, float]]] = None,
         size: float = np.sqrt(1 / 3),
     ) -> List[patches.RegularPolygon]:
         """
