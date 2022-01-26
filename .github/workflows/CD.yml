@@ -37,6 +37,7 @@ jobs:
             echo "ERROR:<->Unable to validate package version: '$VERSION'"
             exit 1
           fi
+
   generate-changelog:
     name: Generate changelog
     needs: setup-envs
@@ -74,12 +75,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install tox
+
       - name: Build with tox
         run: tox -e build
+
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
@@ -88,7 +97,7 @@ jobs:
 
   publish-github:
     name: Publish on GitHub
-    needs: [generate-changelog,build-python, setup-envs]
+    needs: [generate-changelog,build-python,setup-envs]
     runs-on: ubuntu-20.04
 
     steps:
@@ -116,13 +125,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install tox
           sudo apt-get install pandoc
+
       - name: Build docs with tox
         run: tox -e docs
+
       - name: Upload the docs
         uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
