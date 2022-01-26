@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.0.12] - 2022-01-26
+## [0.0.13] - 2022-01-26
 
 ### Bug Fixes
 
@@ -12,7 +12,6 @@ All notable changes to this project will be documented in this file.
 - Mypy typing issues
 - Added virtualenv back for tox
 - Need to install reqs to run jupyter docs
-- Specify python version
 
 ### Documentation
 
@@ -41,7 +40,6 @@ All notable changes to this project will be documented in this file.
 - Bump identify from 2.4.2 to 2.4.4 (#51)
 - Bump pydantic from 1.8.2 to 1.9.0 (#48)
 - Bump codecov/codecov-action from 1 to 2.1.0 (#54)
-- Bump pre-commit from 2.16.0 to 2.17.0 (#56)
 
 ### Performance
 
