@@ -50,18 +50,19 @@ class HexEnvironment(Environment, ABC):
         into matplotlib patches that can plotted.
 
         Example:
-            .. code-block::
-                import matplotlib as mpl
-                import matplotlib.pyplot as plt
-                from jsim.Environment import HexEnvironment
+            .. code-block:: python
 
-                hex = HexEnvironment()
-                fig, ax = plt.subplots(1)
-                ax.set_aspect('equal')
-                for p in hex.as_mpl_polygons(mpl.cm.get_cmap('gray')):
-                    ax.add_patch(p)
-                plt.autoscale(enable=True)
-                plt.show()
+               import matplotlib as mpl
+               import matplotlib.pyplot as plt
+               from jsim.Environment import HexEnvironment
+
+               hex = HexEnvironment()
+               fig, ax = plt.subplots(1)
+               ax.set_aspect("equal")
+               for p in hex.as_mpl_polygons(mpl.cm.get_cmap("gray")):
+                   ax.add_patch(p)
+               plt.autoscale(enable=True)
+               plt.show()
 
         :param cmap: Color map to be used (default = 'Spectral')
         :type cmap: matplotlib.colors.LinearSegmentedColormap
