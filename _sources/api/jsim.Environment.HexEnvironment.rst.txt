@@ -17,8 +17,18 @@ Subpackages
 Submodules
 ----------
 
-.. toctree::
-   :maxdepth: 4
+jsim.Environment.HexEnvironment.HexDirections module
+----------------------------------------------------
 
-   jsim.Environment.HexEnvironment.HexDirections
-   jsim.Environment.HexEnvironment.HexEnvironment
+.. automodule:: jsim.Environment.HexEnvironment.HexDirections
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+jsim.Environment.HexEnvironment.HexEnvironment module
+-----------------------------------------------------
+
+.. automodule:: jsim.Environment.HexEnvironment.HexEnvironment
+   :members:
+   :undoc-members:
+   :show-inheritance:

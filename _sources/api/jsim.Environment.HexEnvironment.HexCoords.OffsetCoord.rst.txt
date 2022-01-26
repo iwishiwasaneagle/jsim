@@ -1,7 +1,0 @@
-jsim.Environment.HexEnvironment.HexCoords.OffsetCoord module
-============================================================
-
-.. automodule:: jsim.Environment.HexEnvironment.HexCoords.OffsetCoord
-   :members:
-   :undoc-members:
-   :show-inheritance:

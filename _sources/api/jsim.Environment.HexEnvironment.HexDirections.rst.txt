@@ -1,7 +1,0 @@
-jsim.Environment.HexEnvironment.HexDirections module
-====================================================
-
-.. automodule:: jsim.Environment.HexEnvironment.HexDirections
-   :members:
-   :undoc-members:
-   :show-inheritance:

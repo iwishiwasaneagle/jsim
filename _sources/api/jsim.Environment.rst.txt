@@ -17,7 +17,10 @@ Subpackages
 Submodules
 ----------
 
-.. toctree::
-   :maxdepth: 4
+jsim.Environment.Environment module
+-----------------------------------
 
-   jsim.Environment.Environment
+.. automodule:: jsim.Environment.Environment
+   :members:
+   :undoc-members:
+   :show-inheritance:

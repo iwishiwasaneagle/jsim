@@ -9,8 +9,18 @@ jsim.Meta package
 Submodules
 ----------
 
-.. toctree::
-   :maxdepth: 4
+jsim.Meta.Action module
+-----------------------
 
-   jsim.Meta.Action
-   jsim.Meta.State
+.. automodule:: jsim.Meta.Action
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+jsim.Meta.State module
+----------------------
+
+.. automodule:: jsim.Meta.State
+   :members:
+   :undoc-members:
+   :show-inheritance:

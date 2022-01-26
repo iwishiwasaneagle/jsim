@@ -1,7 +1,0 @@
-jsim.Environment.Environment module
-===================================
-
-.. automodule:: jsim.Environment.Environment
-   :members:
-   :undoc-members:
-   :show-inheritance:

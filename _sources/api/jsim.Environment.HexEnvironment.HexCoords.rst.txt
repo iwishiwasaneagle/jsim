@@ -9,9 +9,26 @@ jsim.Environment.HexEnvironment.HexCoords package
 Submodules
 ----------
 
-.. toctree::
-   :maxdepth: 4
+jsim.Environment.HexEnvironment.HexCoords.AxialCoord module
+-----------------------------------------------------------
 
-   jsim.Environment.HexEnvironment.HexCoords.AxialCoord
-   jsim.Environment.HexEnvironment.HexCoords.OffsetCoord
-   jsim.Environment.HexEnvironment.HexCoords.PixelCoord
+.. automodule:: jsim.Environment.HexEnvironment.HexCoords.AxialCoord
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+jsim.Environment.HexEnvironment.HexCoords.OffsetCoord module
+------------------------------------------------------------
+
+.. automodule:: jsim.Environment.HexEnvironment.HexCoords.OffsetCoord
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+jsim.Environment.HexEnvironment.HexCoords.PixelCoord module
+-----------------------------------------------------------
+
+.. automodule:: jsim.Environment.HexEnvironment.HexCoords.PixelCoord
+   :members:
+   :undoc-members:
+   :show-inheritance:

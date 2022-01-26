@@ -1,7 +1,0 @@
-jsim.Meta.Action module
-=======================
-
-.. automodule:: jsim.Meta.Action
-   :members:
-   :undoc-members:
-   :show-inheritance:

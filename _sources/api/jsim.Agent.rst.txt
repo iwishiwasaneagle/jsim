@@ -9,7 +9,10 @@ jsim.Agent package
 Submodules
 ----------
 
-.. toctree::
-   :maxdepth: 4
+jsim.Agent.Agent module
+-----------------------
 
-   jsim.Agent.Agent
+.. automodule:: jsim.Agent.Agent
+   :members:
+   :undoc-members:
+   :show-inheritance:
