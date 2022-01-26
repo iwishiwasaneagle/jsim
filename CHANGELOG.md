@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.13+r1] - 2022-01-26
+
+### Performance
+
+- Reduce number of trials and steps
+
+### Testing
+
+- Cache .tox properly, bump python to 3.10
+
 ## [0.0.13] - 2022-01-26
 
 ### Bug Fixes
