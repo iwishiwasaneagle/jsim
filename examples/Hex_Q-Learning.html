@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hex Tiled Q-Learning SAR example &mdash; jsim 0.0.15 documentation</title>
+  <title>Hex Tiled Q-Learning SAR example &mdash; jsim 0.0.16 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -22,7 +22,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Local Hill Climb" href="LHC.html" />
-    <link rel="prev" title="Examples" href="../examples.html" /> 
+    <link rel="prev" title="4D Behavioural Vector PDM Generation" href="4D-Vector.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -34,7 +34,7 @@
             <img src="../_static/banner_nobg.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                0.0.15
+                0.0.16
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -57,6 +57,8 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../api/modules.html">jsim</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="4D-Vector.html">4D Behavioural Vector PDM Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4D-Vector.html#Implement-the-code">Implement the code</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Hex Tiled Q-Learning SAR example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LHC.html">Local Hill Climb</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LHC_GW_CONV.html">LHC_GW_CONV</a></li>
@@ -392,8 +394,8 @@ div.rendered_html tbody tr:hover {
     <span class="n">num_trials</span> <span class="o">=</span> <span class="mi">30000</span>
     <span class="n">steps</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="k">else</span><span class="p">:</span> <span class="c1"># normal operation</span>
-    <span class="n">num_trials</span> <span class="o">=</span> <span class="mi">500000</span>
-    <span class="n">steps</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="n">num_trials</span> <span class="o">=</span> <span class="mi">50000</span>
+    <span class="n">steps</span> <span class="o">=</span> <span class="mi">200</span>
 </pre></div>
 </div>
 </div>
@@ -405,7 +407,7 @@ div.rendered_html tbody tr:hover {
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
-<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
 </pre></div>
 </div>
 </div>
@@ -607,7 +609,7 @@ div.rendered_html tbody tr:hover {
         <span class="bp">self</span><span class="o">.</span><span class="n">data_store</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;env_s&#39;</span><span class="p">:[],</span><span class="s1">&#39;agent_s&#39;</span><span class="p">:[],</span><span class="s1">&#39;agent_a&#39;</span><span class="p">:[],</span><span class="s1">&#39;reward&#39;</span><span class="p">:[]}</span>
 
     <span class="k">def</span> <span class="nf">trials</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_trials</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">max_num_steps</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_trials</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">num_trials</span><span class="p">),):</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">(</span><span class="n">max_num_steps</span><span class="p">)</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trial = </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">num_trials</span><span class="si">}</span><span class="s2"> | Max number of steps (</span><span class="si">{</span><span class="n">max_num_steps</span><span class="si">}</span><span class="s2">) reached &quot;</span><span class="p">)</span>
@@ -712,8 +714,20 @@ div.rendered_html tbody tr:hover {
 <span class="n">sim</span> <span class="o">=</span> <span class="n">QSim</span><span class="p">()</span>
 
 <span class="n">sim</span><span class="o">.</span><span class="n">trials</span><span class="p">(</span><span class="n">num_trials</span><span class="p">,</span><span class="n">steps</span><span class="p">)</span>
-
-<span class="n">plot</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "91fcd4f077e844ccad8917d41b381970", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -722,15 +736,15 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-2022-01-26 14:36:12.252 | INFO     | __main__:plot:30 - Number of steps: 20
-2022-01-26 14:36:12.253 | INFO     | __main__:plot:31 - Number of trials: 30000
+2022-01-28 09:57:21.709 | INFO     | __main__:plot:30 - Number of steps: 200
+2022-01-28 09:57:21.710 | INFO     | __main__:plot:31 - Number of trials: 50000
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/examples_Hex_Q-Learning_8_1.png" src="../_images/examples_Hex_Q-Learning_8_1.png" />
+<img alt="../_images/examples_Hex_Q-Learning_9_1.png" src="../_images/examples_Hex_Q-Learning_9_1.png" />
 </div>
 </div>
 </section>
@@ -739,7 +753,7 @@ div.rendered_html tbody tr:hover {
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../examples.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="4D-Vector.html" class="btn btn-neutral float-left" title="4D Behavioural Vector PDM Generation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="LHC.html" class="btn btn-neutral float-right" title="Local Hill Climb" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

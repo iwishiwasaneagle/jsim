@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>jsim.Environment package &mdash; jsim 0.0.15 documentation</title>
+  <title>jsim.Environment package &mdash; jsim 0.0.16 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -32,7 +32,7 @@
             <img src="../_static/banner_nobg.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                0.0.15
+                0.0.16
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -159,8 +159,8 @@
 environment, the rewards, and the trial terminations.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="jsim.Environment.Environment.Environment">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">jsim.Environment.Environment.</span></span><span class="sig-name descname"><span class="pre">Environment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.10/library/typing.html#typing.Optional" title="(in Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="jsim.Simulation.html#jsim.Simulation.Simulation.Simulation" title="jsim.Simulation.Simulation.Simulation"><span class="pre">jsim.Simulation.Simulation.Simulation</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/jsim/Environment/Environment.html#Environment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#jsim.Environment.Environment.Environment" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.10/library/abc.html#abc.ABC" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">jsim.Environment.Environment.</span></span><span class="sig-name descname"><span class="pre">Environment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/typing.html#typing.Optional" title="(in Python v3.9)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="jsim.Simulation.html#jsim.Simulation.Simulation.Simulation" title="jsim.Simulation.Simulation.Simulation"><span class="pre">jsim.Simulation.Simulation.Simulation</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/jsim/Environment/Environment.html#Environment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#jsim.Environment.Environment.Environment" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.9/library/abc.html#abc.ABC" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
 <p>Base class of all environments. Specific environments are instances of subclassed
 derived from here.</p>
 <dl class="py method">
@@ -181,7 +181,7 @@ initialization of the environment to prepare for a new trial.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="jsim.Environment.Environment.Environment.step">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="jsim.Meta.html#jsim.Meta.Action.Action" title="jsim.Meta.Action.Action"><span class="pre">jsim.Meta.Action.Action</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.10/library/typing.html#typing.Tuple" title="(in Python v3.10)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="jsim.Meta.html#jsim.Meta.State.State" title="jsim.Meta.State.State"><span class="pre">jsim.Meta.State.State</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.10/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/jsim/Environment/Environment.html#Environment.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#jsim.Environment.Environment.Environment.step" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="jsim.Meta.html#jsim.Meta.Action.Action" title="jsim.Meta.Action.Action"><span class="pre">jsim.Meta.Action.Action</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.9/library/typing.html#typing.Tuple" title="(in Python v3.9)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="jsim.Meta.html#jsim.Meta.State.State" title="jsim.Meta.State.State"><span class="pre">jsim.Meta.State.State</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.9/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/jsim/Environment/Environment.html#Environment.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#jsim.Environment.Environment.Environment.step" title="Permalink to this definition"></a></dt>
 <dd><p>Must be provided by the user for their specialized environment. Called once
 every simulation step and causes the environment to undergo a transition
 from its current state to a next state dependent on the action taken by <cite>pa</cite>.</p>
@@ -202,7 +202,7 @@ will have a special value of 0</p>
 </p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Tuple[<a class="reference internal" href="jsim.Meta.html#jsim.Meta.State.State" title="jsim.Meta.State.State">State</a>, <a class="reference external" href="https://docs.python.org/3.10/library/functions.html#float" title="(in Python v3.10)">float</a>]</p>
+<dd class="field-odd"><p>Tuple[<a class="reference internal" href="jsim.Meta.html#jsim.Meta.State.State" title="jsim.Meta.State.State">State</a>, <a class="reference external" href="https://docs.python.org/3.9/library/functions.html#float" title="(in Python v3.9)">float</a>]</p>
 </dd>
 </dl>
 </dd></dl>
