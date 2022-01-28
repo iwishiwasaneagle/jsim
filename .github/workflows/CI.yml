@@ -63,28 +63,3 @@ jobs:
 
     - name: Test with tox
       run: tox -e doctests
-
-
-  run-examples:
-    runs-on: ubuntu-latest
-    name: run examples
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v2
-        with:
-            python-version: "3.10"
-            cache: 'pip'
-
-      - name: Install dependencies
-        run: |
-          python setup.py install
-
-      - name: Run all examples
-        run: |
-          list=$(find examples -type f -name "*.py" ! -name "__init__.py")
-          for i in $list
-          do
-            CI=1 python $i
-          done
