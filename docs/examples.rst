@@ -4,4 +4,4 @@ Examples
 .. toctree::
    :glob:
 
-   examples/*
+   examples/**
