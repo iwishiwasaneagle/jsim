@@ -2,6 +2,51 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.17] - 2022-02-01
+
+### Features
+
+- Converted to using jsim structure
+- Finished FourDBehaviourVector
+
+### Miscellaneous Tasks
+
+- Bump loguru from 0.5.3 to 0.6.0 (#62)
+
+## [0.0.16] - 2022-01-28
+
+### Bug Fixes
+
+- Revert np to 1.22.4 for python 3.10
+- Packages for jsim in setup.cfg, for dev in reqs.txt
+- Run and commit of LHC.ipynb
+- Deleted run-examples job since no examples were there to run and it kept failing
+- Pre-run QL-Hex to save on compute
+- Revert to py3.9 for packages
+- Force use of python3.9
+
+### Features
+
+- Ignore tif (geotif) files
+- Allow large jupyters
+- New PDM generation technique
+- Add rasterio
+- Force use of py39
+
+### Miscellaneous Tasks
+
+- Add workflow_dispatch to CI
+- Use python setup action in CI
+
+### Performance
+
+- Run files locally as some run times are getting very high
+- Run files locally as some run times are getting very high
+
+### Styling
+
+- Fix linebreaks in example
+
 ## [0.0.15] - 2022-01-26
 
 ### Bug Fixes
