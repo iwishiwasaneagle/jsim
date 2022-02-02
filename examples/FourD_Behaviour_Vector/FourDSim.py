@@ -8,6 +8,7 @@ from Coord import Coord
 from Direction import Direction
 from FourDAgent import FourDAgent
 from FourDEnv import FourDEnv
+from loguru import logger
 from Vicinity import Vicinity
 
 from jsim.Simulation import Simulation
@@ -123,7 +124,6 @@ class FourDSim(Simulation):
 
 if __name__ == "__main__":
     import matplotlib.pyplot as plt
-    from loguru import logger
 
     logger.debug("Starting")
     sim = FourDSim(
