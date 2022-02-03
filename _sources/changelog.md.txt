@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.18] - 2022-02-03
+
+### Features
+
+- Use files to store data to preserve my RAM
+- 1e5 trial simulation for 4DVec
+- SixD Behaviour Vector
+- Added rasterio and geopandas as requirements
+- Jupyter env in tox.ini to share requirements easier
+
+### Miscellaneous Tasks
+
+- Bump JamesIves/github-pages-deploy-action from 4.1.7 to 4.2.2 (#53)
+
 ## [0.0.17] - 2022-02-01
 
 ### Features
