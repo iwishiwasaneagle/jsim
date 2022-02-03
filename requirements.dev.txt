@@ -1,5 +1,6 @@
 astroid==2.9.3
 flake8==4.0.1
+geopandas==0.10.2
 isort==5.10.1
 jupyter==1.0.0
 lazy-object-proxy==1.7.1
@@ -10,6 +11,7 @@ pre-commit==2.17.0
 pycodestyle==2.8.0
 pyflakes==2.4.0
 pylint==2.12.2
+rasterio==1.2.10
 scikit-image==0.19.1
 toml==0.10.2
 tomli==2.0.0

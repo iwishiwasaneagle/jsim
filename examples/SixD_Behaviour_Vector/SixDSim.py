@@ -2,37 +2,36 @@ import copy
 from typing import Union
 
 import numpy as np
-import rasterio as rs
 from Behaviour import BehaviourVector
 from Coord import Coord
 from Direction import Direction
-from FourDAgent import FourDAgent
-from FourDEnv import FourDEnv
 from loguru import logger
+from SixDAgent import SixDAgent
+from SixDEnv import SixDEnv
 from Vicinity import Vicinity
 
 from jsim.Simulation import Simulation
 
 
-class FourDSim(Simulation):
-    agent: FourDAgent
-    env: FourDEnv
+class SixDSim(Simulation):
+    agent: SixDAgent
+    env: SixDEnv
 
     agent_a: Direction
     agent_s: Coord
-    vicinity: Vicinity
+    vicinity: tuple[Vicinity, Vicinity]
 
     data_store: dict[str, Union[list[Coord], tuple[float, float, float, float]]]
 
     def __init__(self, initial_pos: Coord, bvecs: list[BehaviourVector] = None):
-        self.env = FourDEnv(self._load_slope(), psim=self)
+        self.env = SixDEnv("./5m_arran_b_merged_slope.tif", psim=self)
 
         if bvecs is None:
             self.bvecs = iter(self._generate_bvectors())
         else:
             self.bvecs = iter(bvecs)
         self.initial_pos = initial_pos
-        self.agent = FourDAgent(
+        self.agent = SixDAgent(
             bvec=next(self.bvecs),
             pos=copy.deepcopy(self.initial_pos),
             psim=self,
@@ -43,24 +42,16 @@ class FourDSim(Simulation):
 
         self.reset()
 
-    def _load_slope(self) -> np.ndarray:
-        dataset_slope = rs.open("./5m_arran_b_merged_slope.tif")
-
-        slope = dataset_slope.read(1)
-        slope[slope == -9999.0] = 0
-        slope = np.deg2rad(slope)
-
-        return slope
-
     def _generate_bvectors(self) -> list[BehaviourVector]:
-        x = np.arange(0, 1.1, 0.1)
-        mesh = np.meshgrid(x, x, x, x)
-        vec = np.vstack([f.flatten() for f in mesh])
-        vec = vec[:, np.sum(vec, axis=0) == 1.0]
-        vec[[0, 1]] = vec[[1, 0]]  # prettier graphs
+        step = 0.2
+        it = np.arange(0, 1 + step, step)
+        vecs = np.meshgrid(*(it,) * 6)
+        vecs = np.vstack([f.flatten() for f in vecs])
+        vecs = vecs[:, np.sum(vecs, axis=0) == 1]
 
         bvecs: list[BehaviourVector] = [
-            BehaviourVector(rw=f[0], lf=f[1], st=f[2], sp=f[3]) for f in vec.T
+            BehaviourVector(rw=f[0], lf=f[1], st=f[2], sp=f[3], bt=f[4], ve=f[5])
+            for f in vecs.T
         ]
 
         return bvecs
@@ -73,6 +64,7 @@ class FourDSim(Simulation):
         )
 
     def trials(self, max_steps_per_trial: int = 300) -> None:
+
         i = -1
         while True:
             if i % 5 == 0:
@@ -124,25 +116,35 @@ class FourDSim(Simulation):
 
 if __name__ == "__main__":
     import matplotlib.pyplot as plt
+    import rasterio.plot as rioplot
+    import rasterio.transform as riotrans
 
     logger.debug("Starting")
-    sim = FourDSim(
-        Coord(x=1900, y=2000), bvecs=[BehaviourVector.fromlist((0.2, 0.3, 0.3, 0.2))]
+    sim = SixDSim(
+        Coord(x=1900, y=2000),
+        bvecs=[BehaviourVector.fromlist((0.2, 0.2, 0.0, 0.0, 0.0, 0.6))],
     )
     logger.debug("Done")
     sim.steps(800)
 
     fig, ax = plt.subplots(figsize=(12, 12), subplot_kw={"aspect": 1})
-    x, y = np.array(
-        [
-            [f.x for f in sim.data_store["coords"]],
-            [f.y for f in sim.data_store["coords"]],
-        ]
+    x, y = riotrans.xy(
+        sim.env.edges.profile["transform"],
+        [f.x for f in sim.data_store["coords"]],
+        [f.y for f in sim.data_store["coords"]],
     )
+
     max_x, max_y = np.max(x), np.max(y)
     min_x, min_y = np.min(x), np.min(y)
-    ax.imshow(sim.env.edges, cmap="gray", origin="lower")
-    ax.set_ylim([min_y - 10, 10 + max_y])
-    ax.set_xlim([min_x - 10, 10 + max_x])
-    ax.plot(x, y)
+
+    hidden_img = plt.imshow(
+        sim.env.slope.read(1),
+        extent=[sim.env.slope.bounds[i] for i in [0, 2, 1, 3]],
+        cmap="jet",
+    )
+    rioplot.show(sim.env.slope, cmap="jet", ax=ax)
+    ax.set_ylim([min_y - 50, 50 + max_y])
+    ax.set_xlim([min_x - 50, 50 + max_x])
+    ax.plot(x, y, "r")
+    fig.colorbar(hidden_img)
     plt.show()
