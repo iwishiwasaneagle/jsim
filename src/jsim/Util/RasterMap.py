@@ -1,5 +1,5 @@
 import os
-from typing import Iterable, Union
+from typing import Iterable, Iterator, Union
 
 import rasterio as rio
 import rasterio.coords as riocoords
@@ -28,10 +28,19 @@ class RasterMap:
 
     def __getitem__(
         self,
-        xy: tuple[Union[slice, int, Iterable[int]], Union[slice, int, Iterable[int]]],
-    ) -> float:
+        xy: tuple[Union[int, Iterable[int]], Union[int, Iterable[int]]],
+    ) -> Iterator[float]:
         x, y = xy
-        return self._nd_map[x, y]
+        if not isinstance(x, Iterable):
+            x = [x]
+        if not isinstance(y, Iterable):
+            y = [y]
+
+        for xi, yi in zip(x, y):
+            if xi < 0 or yi < 0 or xi >= self._map.height or yi >= self._map.width:
+                yield self._map.nodata
+            else:
+                yield self._nd_map[xi, yi]
 
     def xy(
         self, row: Union[float, list[float]], col: Union[float, list[float]]
