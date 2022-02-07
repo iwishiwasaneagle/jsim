@@ -9,7 +9,7 @@ import rasterio.transform as riotrans
 class RasterMap:
     def __init__(self, path: str):
         if not os.path.isfile(path):
-            raise FileNotFoundError(f'file "{path}" does not exist ({os.getcwd()=})')
+            raise FileNotFoundError(f'file "{path}" does not exist')
 
         self._map: rio.DatasetReader = rio.open(path)
         self._nd_map = self._map.read(1)
