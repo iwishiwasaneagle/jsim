@@ -1,4 +1,5 @@
 from enum import IntEnum
+from typing import Tuple
 
 import numpy as np
 import pydantic
@@ -95,7 +96,7 @@ class BehaviourVector(pydantic.BaseModel):
 
     @classmethod
     @pydantic.validate_arguments
-    def fromlist(cls, list_: tuple[float, float, float, float, float, float]):
+    def fromlist(cls, list_: Tuple[float, float, float, float, float, float]):
         return cls(
             rw=list_[0], lf=list_[1], st=list_[2], sp=list_[3], bt=list_[4], ve=list_[5]
         )

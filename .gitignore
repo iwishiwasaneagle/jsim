@@ -54,4 +54,4 @@ MANIFEST
 .conda*/
 
 # GeoTIF
-.tif
+*.tif
