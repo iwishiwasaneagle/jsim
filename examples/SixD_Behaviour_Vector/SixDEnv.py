@@ -1,4 +1,5 @@
 import os.path
+from typing import Tuple
 
 import numpy as np
 import pydantic
@@ -45,10 +46,10 @@ class SixDEnv(Environment):
 
         return Vicinity(vicinity=list(vicinity))
 
-    def reset(self, agent_p: Coord) -> tuple[Vicinity, Vicinity]:
+    def reset(self, agent_p: Coord) -> Tuple[Vicinity, Vicinity]:
         return self.get_edges_vicinity(agent_p), self.get_slope_vicinity(agent_p)
 
-    def step(self, pa: Coord) -> tuple[tuple[Vicinity, Vicinity], float]:
+    def step(self, pa: Coord) -> Tuple[Tuple[Vicinity, Vicinity], float]:
         return (self.get_edges_vicinity(pa), self.get_slope_vicinity(pa)), 0
 
 

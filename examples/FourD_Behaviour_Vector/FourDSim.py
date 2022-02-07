@@ -1,5 +1,5 @@
 import copy
-from typing import Union
+from typing import List, Tuple, Union
 
 import numpy as np
 import rasterio as rs
@@ -22,9 +22,9 @@ class FourDSim(Simulation):
     agent_s: Coord
     vicinity: Vicinity
 
-    data_store: dict[str, Union[list[Coord], tuple[float, float, float, float]]]
+    data_store: dict[str, Union[List[Coord], Tuple[float, float, float, float]]]
 
-    def __init__(self, initial_pos: Coord, bvecs: list[BehaviourVector] = None):
+    def __init__(self, initial_pos: Coord, bvecs: List[BehaviourVector] = None):
         self.env = FourDEnv(self._load_slope(), psim=self)
 
         if bvecs is None:
@@ -52,14 +52,14 @@ class FourDSim(Simulation):
 
         return slope
 
-    def _generate_bvectors(self) -> list[BehaviourVector]:
+    def _generate_bvectors(self) -> List[BehaviourVector]:
         x = np.arange(0, 1.1, 0.1)
         mesh = np.meshgrid(x, x, x, x)
         vec = np.vstack([f.flatten() for f in mesh])
         vec = vec[:, np.sum(vec, axis=0) == 1.0]
         vec[[0, 1]] = vec[[1, 0]]  # prettier graphs
 
-        bvecs: list[BehaviourVector] = [
+        bvecs: List[BehaviourVector] = [
             BehaviourVector(rw=f[0], lf=f[1], st=f[2], sp=f[3]) for f in vec.T
         ]
 

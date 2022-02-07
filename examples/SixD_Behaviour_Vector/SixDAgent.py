@@ -1,4 +1,5 @@
 import copy
+from typing import Tuple
 
 import numpy as np
 import pydantic
@@ -29,7 +30,7 @@ class SixDAgent(Agent):
         self.state = copy.deepcopy(pos)
 
     #    @pydantic.validate_arguments
-    def policy(self, pnext_s: tuple[Vicinity, Vicinity]) -> Direction:
+    def policy(self, pnext_s: Tuple[Vicinity, Vicinity]) -> Direction:
         edges, slopes = pnext_s
         choice = np.random.choice(np.arange(0, len(self.bvec)), p=self.bvec.tolist())
 
@@ -66,7 +67,7 @@ class SixDAgent(Agent):
 
         return Direction(new_direction)
 
-    def step(self, pnext_s: tuple[Vicinity, Vicinity]) -> Direction:
+    def step(self, pnext_s: Tuple[Vicinity, Vicinity]) -> Direction:
         return self.policy(pnext_s)
 
     @pydantic.validate_arguments
@@ -84,9 +85,9 @@ class SixDAgent(Agent):
     def reset(
         self,
         ps: Coord,
-        vicinities: tuple[Vicinity, Vicinity],
+        vicinities: Tuple[Vicinity, Vicinity],
         bvec: BehaviourVector = None,
-    ) -> tuple[Direction, Coord]:
+    ) -> Tuple[Direction, Coord]:
         self.state = copy.deepcopy(ps)
         if bvec is not None:
             self._bvec = copy.copy(bvec)

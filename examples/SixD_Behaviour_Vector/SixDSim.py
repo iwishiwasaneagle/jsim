@@ -1,5 +1,5 @@
 import copy
-from typing import Union
+from typing import List, Tuple, Union
 
 import numpy as np
 from Behaviour import BehaviourVector
@@ -19,11 +19,11 @@ class SixDSim(Simulation):
 
     agent_a: Direction
     agent_s: Coord
-    vicinity: tuple[Vicinity, Vicinity]
+    vicinity: Tuple[Vicinity, Vicinity]
 
-    data_store: dict[str, Union[list[Coord], tuple[float, float, float, float]]]
+    data_store: dict[str, Union[List[Coord], Tuple[float, float, float, float]]]
 
-    def __init__(self, initial_pos: Coord, bvecs: list[BehaviourVector] = None):
+    def __init__(self, initial_pos: Coord, bvecs: List[BehaviourVector] = None):
         self.env = SixDEnv("./5m_arran_b_merged_slope.tif", psim=self)
 
         if bvecs is None:
@@ -42,14 +42,14 @@ class SixDSim(Simulation):
 
         self.reset()
 
-    def _generate_bvectors(self) -> list[BehaviourVector]:
+    def _generate_bvectors(self) -> List[BehaviourVector]:
         step = 0.2
         it = np.arange(0, 1 + step, step)
         vecs = np.meshgrid(*(it,) * 6)
         vecs = np.vstack([f.flatten() for f in vecs])
         vecs = vecs[:, np.sum(vecs, axis=0) == 1]
 
-        bvecs: list[BehaviourVector] = [
+        bvecs: List[BehaviourVector] = [
             BehaviourVector(rw=f[0], lf=f[1], st=f[2], sp=f[3], bt=f[4], ve=f[5])
             for f in vecs.T
         ]

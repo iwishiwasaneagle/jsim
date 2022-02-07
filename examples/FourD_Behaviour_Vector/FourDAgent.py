@@ -1,4 +1,5 @@
 import copy
+from typing import Tuple
 
 import numpy as np
 import pydantic
@@ -70,7 +71,7 @@ class FourDAgent(Agent):
     @pydantic.validate_arguments
     def reset(
         self, ps: Coord, vicinity: Vicinity, bvec: BehaviourVector = None
-    ) -> tuple[Direction, Coord]:
+    ) -> Tuple[Direction, Coord]:
         self.state = copy.deepcopy(ps)
         if bvec is not None:
             self._bvec = copy.copy(bvec)

@@ -1,3 +1,5 @@
+from typing import Tuple
+
 import numpy as np
 import pydantic
 import skimage as ski
@@ -31,5 +33,5 @@ class FourDEnv(Environment):
     def reset(self, agent_p: Coord) -> Vicinity:
         return self.get_vicinity(agent_p)
 
-    def step(self, pa: Coord) -> tuple[Vicinity, float]:
+    def step(self, pa: Coord) -> Tuple[Vicinity, float]:
         return self.get_vicinity(pa), 0
