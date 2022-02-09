@@ -2,7 +2,7 @@ import os
 
 
 class Map:
-    path: int
+    path: str
 
     def __init__(self, path: str):
         if not os.path.isfile(path):
