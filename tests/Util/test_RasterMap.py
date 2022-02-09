@@ -1,21 +1,16 @@
-import string
-
 import numpy as np
 import pytest
+from rasterio.windows import Window
 
 from jsim.Util import RasterMap
 
 
 @pytest.fixture
 def raster():
-    yield RasterMap("tests/Util/test.tif")
-
-
-def test_raster_map_invalid():
-    with pytest.raises(FileNotFoundError):
-        RasterMap(
-            "".join(np.random.choice(list(string.ascii_letters), size=(10,))) + ".tif"
-        )
+    try:
+        yield RasterMap("tests/Util/test.tif")
+    except FileNotFoundError:
+        yield RasterMap("Util/test.tif")
 
 
 def test_raster_map_valid(raster):
@@ -82,3 +77,18 @@ def test_raster_map_xy(raster, row, col, xt, yt):
 
     assert np.all(xt_a > raster.bounds.left) and np.all(xt_a <= raster.bounds.right)
     assert np.all(yt_a > raster.bounds.bottom) and np.all(yt_a <= raster.bounds.top)
+
+
+def test_raster_map_shape(raster):
+    assert raster.shape == (100, 100)
+
+
+def test_raster_map_read(raster):
+    actual = raster.read(1)
+    expected = raster._nd_map
+    assert np.all(actual == expected)
+
+    actual = raster.read(window=Window(1000, 1000, 10, 10))
+    expected = expected[1000 : 1000 + 10, 1000 : 1000 + 10]
+
+    assert np.all(actual == expected)
