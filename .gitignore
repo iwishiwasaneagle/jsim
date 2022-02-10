@@ -55,3 +55,6 @@ MANIFEST
 
 # GeoTIF
 *.tif
+
+# GIS Shapefiles
+*.gpkg
