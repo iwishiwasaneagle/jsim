@@ -11,9 +11,17 @@ def vectormap():
         yield VectorMap("Util/test.gpkg")
 
 
-@pytest.mark.parametrize("x,y,expected", [(0.1, 0.1, 10), (9.9, 9.9, 10), (5, 5, 10)])
+@pytest.mark.parametrize(
+    "x,y,expected",
+    [
+        (0.1, 0.1, [10]),
+        (9.9, 9.9, [10]),
+        (5, 5, [10]),
+        ((0.1, 9.9, 5), (0.1, 9.9, 5), [10.0, 10.0, 10.0]),
+    ],
+)
 def test_vector_map_getitem(vectormap, x, y, expected):
-    actual = vectormap[x, y]["test_val"]
+    actual = [int(f) for f in vectormap[x, y]["test_val"]]
     assert actual == expected  # hard coded in file
 
 

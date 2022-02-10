@@ -27,9 +27,11 @@ class RasterMap(Map):
         return self._map.read(*args, **kwargs)
 
     def __repr__(self):
-        return f"{self.__class__.__name__}\
-        (width={self._map.profile['width']}, \
-        height={self._map.profile['height']})"
+        return (
+            f"{self.__class__.__name__}("
+            f"width={self._map.profile['width']}, "
+            f"height={self._map.profile['height']})"
+        )
 
     def __str__(self):
         return self.__repr__()
@@ -53,12 +55,21 @@ class RasterMap(Map):
     def xy(
         self, row: Union[float, List[float]], col: Union[float, List[float]]
     ) -> Iterable[float]:
+        pass
+        return self._xy(row, col, self._map.profile["transform"])
+
+    @staticmethod
+    def _xy(
+        row: Union[float, List[float]],
+        col: Union[float, List[float]],
+        trans: riotrans.Affine,
+    ) -> Iterable[float]:
         if not isinstance(row, Iterable):
             row = [row]
         if not isinstance(col, Iterable):
             col = [col]
 
-        return riotrans.xy(self._map.profile["transform"], row, col)
+        return riotrans.xy(trans, row, col)
 
 
 if __name__ == "__main__":
