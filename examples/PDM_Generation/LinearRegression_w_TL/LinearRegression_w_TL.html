@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lost Person Search Area Prediction Based on Regression and Transfer Learning Models &mdash; jsim 0.0.19 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="6D Behavioural Vector PDM Generation" href="../SixD_Behaviour_Vector/SixD_Behaviour_Vector.html" />
+    <link rel="prev" title="4D Behavioural Vector PDM Generation" href="../FourD_Behaviour_Vector/FourD_Behaviour_Vector.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> jsim
+            <img src="../../../_static/banner_nobg.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0.19
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html#docs">Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html#making-changes-contributing">Making Changes &amp; Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">jsim</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../Hex_Q-Learning.html">Hex Tiled Q-Learning SAR example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../LHC.html">Local Hill Climb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../LHC_GW_CONV.html">LHC_GW_CONV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../FourD_Behaviour_Vector/FourD_Behaviour_Vector.html">4D Behavioural Vector PDM Generation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lost Person Search Area Prediction Based on Regression and Transfer Learning Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SixD_Behaviour_Vector/SixD_Behaviour_Vector.html">6D Behavioural Vector PDM Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Potential.html">Potential Navigation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc.</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Contributors</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">jsim</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../examples.html">Examples</a> &raquo;</li>
+      <li>Lost Person Search Area Prediction Based on Regression and Transfer Learning Models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/examples/PDM_Generation/LinearRegression_w_TL/LinearRegression_w_TL.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="Lost-Person-Search-Area-Prediction-Based-on-Regression-and-Transfer-Learning-Models">
+<h1>Lost Person Search Area Prediction Based on Regression and Transfer Learning Models<a class="headerlink" href="#Lost-Person-Search-Area-Prediction-Based-on-Regression-and-Transfer-Learning-Models" title="Permalink to this headline"></a></h1>
+<blockquote>
+<div><p>[1] L. Šerić, T. Pinjušić, K. Topić, and T. Blažević, ‘Lost Person Search Area Prediction Based on Regression and Transfer Learning Models’, IJGI, vol. 10, no. 2, p. 80, Feb. 2021, doi: 10.3390/ijgi10020080.</p>
+</div></blockquote>
+<blockquote>
+<div><p>[2] Lidar Composite Digital Terrain Model Scotland (Phase2) 1m resolution [ASC geospatial data], Scale 1:4000, Tiles: nr82ne,nr83se,nr92nw,nr92sw,nr93sw,nr91ne,nr92ne,nr92se,nr93se,ns02ne,ns02nw,ns02se,ns02sw,ns03se,ns03sw, Updated: 1 July 2014, Non-Commercial Government Licence, Using: EDINA LIDAR Digimap Service, <a class="reference external" href="https://digimap.edina.ac.uk">https://digimap.edina.ac.uk</a>, Downloaded: 2022-01-28 13:08:03.643</p>
+<p>[3] Land Cover Map 2020 [GeoPackage geospatial data], Scale 1:250000, Tiles: GB, Updated: 10 September 2021, CEH, Using: EDINA Environment Digimap Service, <a class="reference external" href="https://digimap.edina.ac.uk">https://digimap.edina.ac.uk</a>, Downloaded: 2022-01-28 13:18:37.865</p>
+</div></blockquote>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">import</span> <span class="nn">rasterio.plot</span> <span class="k">as</span> <span class="nn">rioplot</span>
+<span class="kn">import</span> <span class="nn">rasterio.windows</span> <span class="k">as</span> <span class="nn">riow</span>
+
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+
+<span class="kn">from</span> <span class="nn">LR_Sim</span> <span class="kn">import</span> <span class="n">LR_Sim</span>
+<span class="kn">from</span> <span class="nn">jsim.Util</span> <span class="kn">import</span> <span class="n">RasterMap</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/jhewers/Documents/projects/jsim/examples/PDM_Generation/LinearRegression_w_TL/LR_Sim.py:10: TqdmExperimentalWarning: Using `tqdm.autonotebook.tqdm` in notebook mode. Use `tqdm.tqdm` instead to force console mode (e.g. in jupyter console)
+  from tqdm.autonotebook import tqdm
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">dem</span> <span class="o">=</span> <span class="n">RasterMap</span><span class="p">(</span><span class="s1">&#39;5m_arran_b_merged.tif&#39;</span><span class="p">)</span>
+<span class="n">slope</span> <span class="o">=</span> <span class="n">RasterMap</span><span class="p">(</span><span class="s1">&#39;5m_arran_b_merged_slope.tif&#39;</span><span class="p">)</span>
+<span class="n">lcid</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;arran_lcm_2020.gpkg&#39;</span><span class="p">)</span>
+<span class="n">lcid</span><span class="p">[</span><span class="s1">&#39;_mode&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lcid</span><span class="p">[</span><span class="s1">&#39;_mode&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+<span class="n">lcid_labels</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="s2">&quot;Broadleaved woodland&quot;</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">:</span><span class="s2">&quot;Coniferous Woodland&quot;</span><span class="p">,</span>
+    <span class="mi">3</span><span class="p">:</span><span class="s2">&quot;Arable and Horticulture&quot;</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">:</span><span class="s2">&quot;Improved Grassland&quot;</span><span class="p">,</span>
+    <span class="mi">5</span><span class="p">:</span><span class="s2">&quot;Neutral Grassland&quot;</span><span class="p">,</span>
+    <span class="mi">6</span><span class="p">:</span><span class="s2">&quot;Calcareous Grassland&quot;</span><span class="p">,</span>
+    <span class="mi">7</span><span class="p">:</span><span class="s2">&quot;Acid grassland&quot;</span><span class="p">,</span>
+    <span class="mi">8</span><span class="p">:</span><span class="s2">&quot;Fen, Marsh and Swamp&quot;</span><span class="p">,</span>
+    <span class="mi">9</span><span class="p">:</span><span class="s2">&quot;Heather&quot;</span><span class="p">,</span>
+    <span class="mi">10</span><span class="p">:</span><span class="s2">&quot;Heather grassland&quot;</span><span class="p">,</span>
+    <span class="mi">11</span><span class="p">:</span><span class="s2">&quot;Bog&quot;</span><span class="p">,</span>
+    <span class="mi">12</span><span class="p">:</span><span class="s2">&quot;Inland Rock&quot;</span><span class="p">,</span>
+    <span class="mi">13</span><span class="p">:</span><span class="s2">&quot;Saltwater&quot;</span><span class="p">,</span>
+    <span class="mi">14</span><span class="p">:</span><span class="s2">&quot;Freshwater&quot;</span><span class="p">,</span>
+    <span class="mi">15</span><span class="p">:</span><span class="s2">&quot;Supra-littoral Rock&quot;</span><span class="p">,</span>
+    <span class="mi">16</span><span class="p">:</span><span class="s2">&quot;Supra-littoral Sediment&quot;</span><span class="p">,</span>
+    <span class="mi">17</span><span class="p">:</span><span class="s2">&quot;Littoral Rock&quot;</span><span class="p">,</span>
+    <span class="mi">18</span><span class="p">:</span><span class="s2">&quot;Littoral sediment&quot;</span><span class="p">,</span>
+    <span class="mi">19</span><span class="p">:</span><span class="s2">&quot;Saltmarsh&quot;</span><span class="p">,</span>
+    <span class="mi">20</span><span class="p">:</span><span class="s2">&quot;Urban&quot;</span><span class="p">,</span>
+    <span class="mi">21</span><span class="p">:</span><span class="s2">&quot;Suburban&quot;</span>
+<span class="p">}</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">lcid_labels</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">lcid_labels</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+<span class="n">mapping_ar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="n">mapping_ar</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+<span class="n">lcid</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mapping_ar</span><span class="p">[</span><span class="n">lcid</span><span class="p">[</span><span class="s1">&#39;_mode&#39;</span><span class="p">]]</span>
+
+<span class="n">lcid</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>_conf</th>
+      <th>_hist</th>
+      <th>_mode</th>
+      <th>_n</th>
+      <th>_purity</th>
+      <th>_stdev</th>
+      <th>_agg</th>
+      <th>gid</th>
+      <th>geometry</th>
+      <th>label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1001773</td>
+      <td>58.1</td>
+      <td>1:4,4:165,10:101</td>
+      <td>4</td>
+      <td>270</td>
+      <td>61.11</td>
+      <td>12.53</td>
+      <td>4</td>
+      <td>6421163</td>
+      <td>MULTIPOLYGON (((201043.83839 645863.24969, 201...</td>
+      <td>Improved Grassland</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1236986</td>
+      <td>73.27</td>
+      <td>1:29,4:65</td>
+      <td>4</td>
+      <td>94</td>
+      <td>69.15</td>
+      <td>22.54</td>
+      <td>4</td>
+      <td>5253892</td>
+      <td>MULTIPOLYGON (((201274.79811 645933.72928, 201...</td>
+      <td>Improved Grassland</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>47</td>
+      <td>97.28</td>
+      <td>4:159</td>
+      <td>4</td>
+      <td>159</td>
+      <td>100</td>
+      <td>5.34</td>
+      <td>4</td>
+      <td>683721</td>
+      <td>MULTIPOLYGON (((201167.06943 645982.06618, 201...</td>
+      <td>Improved Grassland</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>892738</td>
+      <td>88.94</td>
+      <td>4:220</td>
+      <td>4</td>
+      <td>220</td>
+      <td>100</td>
+      <td>11.64</td>
+      <td>4</td>
+      <td>3610831</td>
+      <td>MULTIPOLYGON (((201001.59000 646137.80000, 201...</td>
+      <td>Improved Grassland</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5051091</td>
+      <td>74.7</td>
+      <td>1:42,3:4,4:12,10:613</td>
+      <td>10</td>
+      <td>671</td>
+      <td>91.36</td>
+      <td>14.62</td>
+      <td>6</td>
+      <td>5863451</td>
+      <td>MULTIPOLYGON (((201398.56846 645866.19113, 201...</td>
+      <td>Heather grassland</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>In [1], Šerić et al. translate the Corine Land Cover codes to their on identification code. This would have given them a continuous id to use within their linear regression. Otherwise, similar values such as “Agro-Forestry Areas” (244) and “Broad-Leaved Forest” (311) would have a gap of 67 rather than 1. We must do the same for the local dataset being used, the Isle of Arran in this case.</p>
+<p>For this dataset, we have a selection of 16/21 of the UKCEH Land Cover Classes:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 38%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Local DB ID</p></th>
+<th class="head"><p>UKCEH Land Cover Class</p></th>
+<th class="head"><p>UKCEH Aggregate Class</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Improved Grassland</p></td>
+<td><p>Improved Glassland</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Heather grassland</p></td>
+<td><p>Semi-natural Grassland</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Broadleaved woodland</p></td>
+<td><p>Broadleaved woodland</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Supra-littoral Rock</p></td>
+<td><p>Coastal</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Coniferous Woodland</p></td>
+<td><p>Coniferous woodland</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Littoral sediment</p></td>
+<td><p>Coastal</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Heather</p></td>
+<td><p>Mountain, heath and bog</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Arable and Horticulture</p></td>
+<td><p>Arable</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Suburban</p></td>
+<td><p>Built-up areas and gardens</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>Urban</p></td>
+<td><p>Built-up areas and gardens</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Saltmarsh</p></td>
+<td><p>Coastal</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Saltwater</p></td>
+<td><p>Saltwater</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>Bog</p></td>
+<td><p>Mountain, heath and bog</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>Acid grassland</p></td>
+<td><p>Semi-natural grassland</p></td>
+</tr>
+<tr class="row-even"><td><p>14</p></td>
+<td><p>Freshwater</p></td>
+<td><p>Freshwater</p></td>
+</tr>
+<tr class="row-odd"><td><p>15</p></td>
+<td><p>Supra-littoral Sediment</p></td>
+<td><p>Coastal</p></td>
+</tr>
+<tr class="row-even"><td><p>16</p></td>
+<td><p>Inland Rock</p></td>
+<td><p>Mountain, heath and bog</p></td>
+</tr>
+</tbody>
+</table>
+<p>We then must map it to the very sparse LCid table from [1] to get:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 76%" />
+<col style="width: 4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Original Label</p></th>
+<th class="head"><p>Equivalent UKCEH Land Cover Class(es)</p></th>
+<th class="head"><p>LC id</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Agro-forestry areas</p></td>
+<td><p>Arable</p></td>
+<td><p>22</p></td>
+</tr>
+<tr class="row-odd"><td><p>Broad-leaved forest</p></td>
+<td><p>Broadleaf woodland</p></td>
+<td><p>23</p></td>
+</tr>
+<tr class="row-even"><td><p>Coniferous forest</p></td>
+<td><p>Coniferous woodland</p></td>
+<td><p>24</p></td>
+</tr>
+<tr class="row-odd"><td><p>Mixed forest</p></td>
+<td><p>Coniferous woodland</p></td>
+<td><p>25</p></td>
+</tr>
+<tr class="row-even"><td><p>Natural grasslands</p></td>
+<td><p>Neutral grassland, Calcareous grassland, Acid grassland</p></td>
+<td><p>26</p></td>
+</tr>
+<tr class="row-odd"><td><p>Moors and heathland</p></td>
+<td><p>Heather grassland, Bog, Inland rock, Supra-littoral rock, Supra-litorral sediment, Littoral sediment, Saltmarsh</p></td>
+<td><p>27</p></td>
+</tr>
+<tr class="row-even"><td><p>Sclerophyllous vegetation</p></td>
+<td><p>Heather</p></td>
+<td><p>28</p></td>
+</tr>
+<tr class="row-odd"><td><p>Transitional woodland-shrub</p></td>
+<td><p>Improve grassland, Urban, Suburban,</p></td>
+<td><p>29</p></td>
+</tr>
+</tbody>
+</table>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">labels_conversion</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">1</span><span class="p">:</span><span class="mi">23</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">:</span><span class="mi">24</span><span class="p">,</span>
+    <span class="mi">3</span><span class="p">:</span><span class="mi">22</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">:</span><span class="mi">29</span><span class="p">,</span>
+    <span class="mi">5</span><span class="p">:</span><span class="mi">26</span><span class="p">,</span>
+    <span class="mi">6</span><span class="p">:</span><span class="mi">26</span><span class="p">,</span>
+    <span class="mi">7</span><span class="p">:</span><span class="mi">26</span><span class="p">,</span>
+    <span class="mi">8</span><span class="p">:</span><span class="mi">27</span><span class="p">,</span>
+    <span class="mi">9</span><span class="p">:</span><span class="mi">28</span><span class="p">,</span>
+    <span class="mi">10</span><span class="p">:</span><span class="mi">27</span><span class="p">,</span>
+    <span class="mi">11</span><span class="p">:</span><span class="mi">27</span><span class="p">,</span>
+    <span class="mi">12</span><span class="p">:</span><span class="mi">27</span><span class="p">,</span>
+    <span class="mi">13</span><span class="p">:</span><span class="mi">1000</span><span class="p">,</span>  <span class="c1"># saltwater</span>
+    <span class="mi">14</span><span class="p">:</span><span class="mi">1000</span><span class="p">,</span>  <span class="c1"># freshwater</span>
+    <span class="mi">15</span><span class="p">:</span><span class="mi">27</span><span class="p">,</span>
+    <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">,</span>
+    <span class="mi">17</span><span class="p">:</span><span class="mi">27</span><span class="p">,</span>
+    <span class="mi">18</span><span class="p">:</span><span class="mi">27</span><span class="p">,</span>
+    <span class="mi">19</span><span class="p">:</span><span class="mi">27</span><span class="p">,</span>
+    <span class="mi">20</span><span class="p">:</span><span class="mi">29</span><span class="p">,</span>
+    <span class="mi">21</span><span class="p">:</span><span class="mi">29</span>
+<span class="p">}</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">labels_conversion</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">labels_conversion</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+<span class="n">mapping_ar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="n">mapping_ar</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+<span class="n">lcid</span><span class="p">[</span><span class="s1">&#39;lcid&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mapping_ar</span><span class="p">[</span><span class="n">lcid</span><span class="p">[</span><span class="s1">&#39;_mode&#39;</span><span class="p">]]</span>
+
+<span class="n">lcid</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>_conf</th>
+      <th>_hist</th>
+      <th>_mode</th>
+      <th>_n</th>
+      <th>_purity</th>
+      <th>_stdev</th>
+      <th>_agg</th>
+      <th>gid</th>
+      <th>geometry</th>
+      <th>label</th>
+      <th>lcid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1001773</td>
+      <td>58.1</td>
+      <td>1:4,4:165,10:101</td>
+      <td>4</td>
+      <td>270</td>
+      <td>61.11</td>
+      <td>12.53</td>
+      <td>4</td>
+      <td>6421163</td>
+      <td>MULTIPOLYGON (((201043.83839 645863.24969, 201...</td>
+      <td>Improved Grassland</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1236986</td>
+      <td>73.27</td>
+      <td>1:29,4:65</td>
+      <td>4</td>
+      <td>94</td>
+      <td>69.15</td>
+      <td>22.54</td>
+      <td>4</td>
+      <td>5253892</td>
+      <td>MULTIPOLYGON (((201274.79811 645933.72928, 201...</td>
+      <td>Improved Grassland</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>47</td>
+      <td>97.28</td>
+      <td>4:159</td>
+      <td>4</td>
+      <td>159</td>
+      <td>100</td>
+      <td>5.34</td>
+      <td>4</td>
+      <td>683721</td>
+      <td>MULTIPOLYGON (((201167.06943 645982.06618, 201...</td>
+      <td>Improved Grassland</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>892738</td>
+      <td>88.94</td>
+      <td>4:220</td>
+      <td>4</td>
+      <td>220</td>
+      <td>100</td>
+      <td>11.64</td>
+      <td>4</td>
+      <td>3610831</td>
+      <td>MULTIPOLYGON (((201001.59000 646137.80000, 201...</td>
+      <td>Improved Grassland</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5051091</td>
+      <td>74.7</td>
+      <td>1:42,3:4,4:12,10:613</td>
+      <td>10</td>
+      <td>671</td>
+      <td>91.36</td>
+      <td>14.62</td>
+      <td>6</td>
+      <td>5863451</td>
+      <td>MULTIPOLYGON (((201398.56846 645866.19113, 201...</td>
+      <td>Heather grassland</td>
+      <td>27</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;DEM of South Arran&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Slope map of South Arran&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x (m)&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y (m)&quot;</span><span class="p">)</span>
+
+<span class="n">rioplot</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">dem</span><span class="o">.</span><span class="n">_map</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">rioplot</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">slope</span><span class="o">.</span><span class="n">_map</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">lcid</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">aspect</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/examples_PDM_Generation_LinearRegression_w_TL_LinearRegression_w_TL_5_1.png" src="../../../_images/examples_PDM_Generation_LinearRegression_w_TL_LinearRegression_w_TL_5_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/examples_PDM_Generation_LinearRegression_w_TL_LinearRegression_w_TL_5_2.png" src="../../../_images/examples_PDM_Generation_LinearRegression_w_TL_LinearRegression_w_TL_5_2.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">LR_Sim</span><span class="p">(</span><span class="s2">&quot;5m_arran_b_merged.tif&quot;</span><span class="p">,</span><span class="s2">&quot;5m_arran_b_merged_slope.tif&quot;</span><span class="p">,</span><span class="s2">&quot;arran_lcm_2020.gpkg&quot;</span><span class="p">)</span>
+
+<span class="n">sim</span><span class="o">.</span><span class="n">steps</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">1200</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022-02-10 14:39:14.598 | DEBUG    | LR_Env:__init__:59 - Instantiating LR_Env with start=Coord(x=2500, y=2000) and scale=5
+2022-02-10 14:39:14.655 | DEBUG    | LR_Env:__init__:61 - self.dem=RasterMap(width=5000, height=4000) initiated
+2022-02-10 14:39:14.728 | DEBUG    | LR_Env:__init__:63 - self.slope=RasterMap(width=5000, height=4000) initiated
+2022-02-10 14:39:15.397 | DEBUG    | LR_Env:_CONVERT_UKCEH_TO_LCID:14 - Converting UKCEH IDs to LCIDs for vmap=VectorMap(8776854154144)
+2022-02-10 14:39:15.400 | DEBUG    | LR_Env:_CONVERT_UKCEH_TO_LCID:44 - Converted UKCEH IDs to LCIDs for vmap=VectorMap(8776854154144)
+2022-02-10 14:39:15.400 | DEBUG    | LR_Env:__init__:65 - self.lcid=VectorMap(8776854154144) initiated
+2022-02-10 14:39:15.401 | DEBUG    | LR_Env:reset:75 - Resetting with start=Coord(x=2500, y=2000)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "df89e5beb65b4b3fb529b501007e6bde"}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022-02-10 14:44:16.072 | DEBUG    | LR_Sim:steps:107 - Max. distance above threshold (1200m). Stopping simulation
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">times</span>
+
+<span class="n">z</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">z</span><span class="p">)]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">tmp_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="n">tmp_z_sum_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">tmp_z</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">tmp_z_sum_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">tmp_z</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">tmp_z_sum_x</span><span class="p">[</span><span class="n">tmp_z_sum_x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">tmp_z_sum_y</span><span class="p">[</span><span class="n">tmp_z_sum_y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="n">min_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">tmp_z_sum_x</span><span class="o">==</span><span class="n">tmp_z_sum_x</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">tmp_z_sum_x</span><span class="p">)][</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">max_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">tmp_z_sum_x</span><span class="o">==</span><span class="n">tmp_z_sum_x</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">tmp_z_sum_x</span><span class="p">)][</span><span class="o">-</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">min_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">tmp_z_sum_y</span><span class="o">==</span><span class="n">tmp_z_sum_y</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">tmp_z_sum_y</span><span class="p">)][</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">max_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">tmp_z_sum_y</span><span class="o">==</span><span class="n">tmp_z_sum_y</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">tmp_z_sum_y</span><span class="p">)][</span><span class="o">-</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># rio reads from top down, so lower y is higher transformed y</span>
+<span class="c1">#        \/</span>
+<span class="n">min_xt</span><span class="p">,</span> <span class="n">max_yt</span> <span class="o">=</span> <span class="n">dem</span><span class="o">.</span><span class="n">xy</span><span class="p">(</span><span class="n">min_y</span><span class="p">,</span> <span class="n">min_x</span><span class="p">)</span>
+<span class="n">max_xt</span><span class="p">,</span> <span class="n">min_yt</span> <span class="o">=</span> <span class="n">dem</span><span class="o">.</span><span class="n">xy</span><span class="p">(</span><span class="n">max_y</span><span class="p">,</span> <span class="n">max_x</span><span class="p">)</span>
+<span class="n">min_xt</span><span class="p">,</span> <span class="n">max_xt</span><span class="p">,</span> <span class="n">min_yt</span><span class="p">,</span> <span class="n">max_yt</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="p">(</span><span class="n">min_xt</span><span class="p">,</span> <span class="n">max_xt</span><span class="p">,</span> <span class="n">min_yt</span><span class="p">,</span> <span class="n">max_yt</span><span class="p">)]</span>
+
+<span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a_label</span><span class="p">,</span> <span class="n">b_label</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    <span class="n">b_plot</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span>
+        <span class="n">b</span><span class="o">.</span><span class="n">_map</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">riow</span><span class="o">.</span><span class="n">Window</span><span class="p">(</span><span class="n">min_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_x</span><span class="o">-</span><span class="n">min_x</span><span class="p">,</span> <span class="n">max_y</span><span class="o">-</span><span class="n">min_y</span><span class="p">)),</span>
+        <span class="n">levels</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+        <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_y</span><span class="p">])</span>
+    <span class="n">a_plot</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">sim</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">b_plot</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">b_label</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">a_plot</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">a_label</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="n">min_y</span><span class="p">,</span> <span class="n">max_y</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">times</span><span class="p">,</span> <span class="n">sim</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">dem</span><span class="p">,</span> <span class="s2">&quot;Time(s)&quot;</span><span class="p">,</span> <span class="s2">&quot;DEM (m)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/examples_PDM_Generation_LinearRegression_w_TL_LinearRegression_w_TL_8_0.png" src="../../../_images/examples_PDM_Generation_LinearRegression_w_TL_LinearRegression_w_TL_8_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">times</span><span class="p">,</span> <span class="n">sim</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">slope</span><span class="p">,</span> <span class="s2">&quot;Time (s)&quot;</span><span class="p">,</span> <span class="s2">&quot;Slope&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/examples_PDM_Generation_LinearRegression_w_TL_LinearRegression_w_TL_9_0.png" src="../../../_images/examples_PDM_Generation_LinearRegression_w_TL_LinearRegression_w_TL_9_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">b_plot</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span>
+    <span class="n">sim</span><span class="o">.</span><span class="n">distance</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">a_plot</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">times</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">sim</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">b_plot</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">a_plot</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="n">min_y</span><span class="p">,</span> <span class="n">max_y</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/examples_PDM_Generation_LinearRegression_w_TL_LinearRegression_w_TL_10_0.png" src="../../../_images/examples_PDM_Generation_LinearRegression_w_TL_LinearRegression_w_TL_10_0.png" />
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../FourD_Behaviour_Vector/FourD_Behaviour_Vector.html" class="btn btn-neutral float-left" title="4D Behavioural Vector PDM Generation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../SixD_Behaviour_Vector/SixD_Behaviour_Vector.html" class="btn btn-neutral float-right" title="6D Behavioural Vector PDM Generation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, iwishiwasaneagle.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

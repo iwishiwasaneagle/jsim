@@ -16,3 +16,4 @@ Subpackages
    jsim.Environment
    jsim.Meta
    jsim.Simulation
+   jsim.Util

@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.19] - 2022-02-10
+
+### Bug Fixes
+
+- Title 4D -> 6D
+
+### Features
+
+- Ignore tif (geotif) files (properly)
+- Bounds error checking on RasterMap
+- New VectorMap type
+- LR w TR by Seric et al
+- Profiling and profile visualization via tox
+
+### Miscellaneous Tasks
+
+- Update requirements with rtree, gpd, and rio
+- Update requirements
+- Ignore gpkg (GIS shapefiles)
+- Improve reliability for __getitem__
+- Remove cachetools
+- Remove geocube from deps
+
+### Refactor
+
+- Use Tuple and List from Typing for backward compatibility
+- New examples folder for PDM Generation
+
+### Testing
+
+- 100% tests for RasterMap
+- Only run ci for 3.9 as type subscription isn't full supported in 3.7 and 3.8
+
 ## [0.0.18] - 2022-02-03
 
 ### Features
@@ -96,13 +129,10 @@ All notable changes to this project will be documented in this file.
 
 ### Documentation
 
-- CLI flags to make the submodule/subpackage a bit nicer to view
-- Package requirements needed for doctest
 - Example formatting in HexEnvironment.py
 
 ### Features
 
-- New HexEnvironment to enable hexagonal tiled simulations
 - Q-Learning hex environment example
 - Q-Learning hex environment example completed. Results dubious
 - Dev requirements
@@ -110,7 +140,6 @@ All notable changes to this project will be documented in this file.
 
 ### Miscellaneous Tasks
 
-- Add pydantic 1.8.2 to requirements
 - Cache tox and pip in CI (#36)
 - Bump fonttools from 4.28.4 to 4.28.5 (#34)
 - Bump numpy from 1.21.4 to 1.21.5 (#35)
@@ -134,6 +163,21 @@ All notable changes to this project will be documented in this file.
 ### Refactor
 
 - Types and default envs in one block
+
+## [0.0.12] - 2021-12-20
+
+### Documentation
+
+- CLI flags to make the submodule/subpackage a bit nicer to view
+- Package requirements needed for doctest
+
+### Features
+
+- New HexEnvironment to enable hexagonal tiled simulations
+
+### Miscellaneous Tasks
+
+- Add pydantic 1.8.2 to requirements
 
 ### Testing
 

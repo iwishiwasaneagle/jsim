@@ -1,0 +1,34 @@
+jsim.Util package
+=================
+
+.. automodule:: jsim.Util
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+jsim.Util.Map module
+--------------------
+
+.. automodule:: jsim.Util.Map
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+jsim.Util.RasterMap module
+--------------------------
+
+.. automodule:: jsim.Util.RasterMap
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+jsim.Util.VectorMap module
+--------------------------
+
+.. automodule:: jsim.Util.VectorMap
+   :members:
+   :undoc-members:
+   :show-inheritance:
