@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>jsim.Meta.State &mdash; jsim 0.0.20 documentation</title>
+  <title>jsim.Types.Coord &mdash; jsim 0.0.20 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -75,7 +75,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../index.html">Module code</a> &raquo;</li>
-      <li>jsim.Meta.State</li>
+      <li>jsim.Types.Coord</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -84,13 +84,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for jsim.Meta.State</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="State"><a class="viewcode-back" href="../../../api/jsim.Meta.html#jsim.Meta.State.State">[docs]</a><span></span><span class="k">class</span> <span class="nc">State</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Base class for all states to be sensed by the agent within the environment.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+  <h1>Source code for jsim.Types.Coord</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
 
-    <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Coord"><a class="viewcode-back" href="../../../api/jsim.Types.html#jsim.Types.Coord.Coord">[docs]</a><span class="k">class</span> <span class="nc">Coord</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">y</span><span class="p">:</span> <span class="nb">float</span></div>
 </pre></div>
 
            </div>

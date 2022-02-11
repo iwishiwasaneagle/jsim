@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>jsim.Simulation.Simulation &mdash; jsim 0.0.19 documentation</title>
+  <title>jsim.Simulation.Simulation &mdash; jsim 0.0.20 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -29,7 +29,7 @@
             <img src="../../../_static/banner_nobg.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                0.0.19
+                0.0.20
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
@@ -121,7 +121,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Simulation.reset"><a class="viewcode-back" href="../../../api/jsim.Simulation.html#jsim.Simulation.Simulation.Simulation.reset">[docs]</a>    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Forces the beginning of a new trial. Calls `self.pa.reset()` and</span>
 <span class="sd">        `self.pe.reset()` to get the first action and state respectively.</span>
@@ -136,7 +136,7 @@
         <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="Simulation.steps"><a class="viewcode-back" href="../../../api/jsim.Simulation.html#jsim.Simulation.Simulation.Simulation.steps">[docs]</a>    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">steps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">steps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Runs the simulation for `num_steps` steps, starting from whatever state the</span>
 <span class="sd">        environment is in. If the terminal state is reached, it should immediately</span>
@@ -193,7 +193,7 @@
 
 <div class="viewcode-block" id="Simulation.collect_data"><a class="viewcode-back" href="../../../api/jsim.Simulation.html#jsim.Simulation.Simulation.Simulation.collect_data">[docs]</a>    <span class="k">def</span> <span class="nf">collect_data</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">ps</span><span class="p">:</span> <span class="n">State</span><span class="p">,</span> <span class="n">pa</span><span class="p">:</span> <span class="n">Action</span><span class="p">,</span> <span class="n">pnext_s</span><span class="p">:</span> <span class="n">State</span><span class="p">,</span> <span class="n">reward</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This function is called once on each step of the simulation. The default method</span>
 <span class="sd">        does nothing. This is where the user can gain access to the simulation&#39;s</span>

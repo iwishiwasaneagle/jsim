@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.20] - 2022-02-11
+
+### Features
+
+- New types submodule to house shared types
+- New at method for explicity x y indexing. needs implemented
+
+### Miscellaneous Tasks
+
+- Bump JamesIves/github-pages-deploy-action (#67)
+- Bump fonttools from 4.28.5 to 4.29.1 (#63)
+- Bump setuptools-scm from 6.3.2 to 6.4.2 (#57)
+
+### Testing
+
+- Hide abstract methods from coverage
+
 ## [0.0.19] - 2022-02-10
 
 ### Bug Fixes
