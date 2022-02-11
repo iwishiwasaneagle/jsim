@@ -1,9 +1,16 @@
+from __future__ import annotations
+
 from typing import Any
 
 import geopandas as gpd
 import numpy as np
 from shapely.geometry import Point
 
+from jsim.Types import (
+    LIST_AND_INDIVIDUAL_COORD,
+    LIST_AND_INDIVIDUAL_FLOAT,
+    LIST_AND_INDIVIDUAL_INT,
+)
 from jsim.Util.Map import Map
 
 
@@ -26,6 +33,11 @@ class VectorMap(Map):
     def __getitem__(self, item):
         return self._getitem(item, self._map)
 
+    def set_crs(self, crs: str) -> VectorMap:
+        super(VectorMap, self).set_crs(crs)
+        self._map.set_crs(crs, inplace=True)
+        return self
+
     @staticmethod
     def _getitem(item: Any, rmap: gpd.GeoDataFrame):
         item = np.array(item)
@@ -38,6 +50,22 @@ class VectorMap(Map):
         return rmap.loc[
             rmap.sindex.query_bulk((Point(*f) for f in pts), "within")[1].tolist()
         ]
+
+    def at(
+        self,
+        x: LIST_AND_INDIVIDUAL_INT = None,
+        y: LIST_AND_INDIVIDUAL_INT = None,
+        coord: LIST_AND_INDIVIDUAL_COORD = None,
+    ) -> LIST_AND_INDIVIDUAL_FLOAT:
+        pass
+
+    def _at_xy(
+        self, x: LIST_AND_INDIVIDUAL_INT, y: LIST_AND_INDIVIDUAL_INT
+    ) -> LIST_AND_INDIVIDUAL_INT:
+        pass
+
+    def _at_coord(self, coord: LIST_AND_INDIVIDUAL_COORD) -> LIST_AND_INDIVIDUAL_FLOAT:
+        pass
 
 
 if __name__ == "__main__":

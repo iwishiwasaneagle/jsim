@@ -92,3 +92,12 @@ def test_raster_map_read(raster):
     expected = expected[1000 : 1000 + 10, 1000 : 1000 + 10]
 
     assert np.all(actual == expected)
+
+
+@pytest.mark.parametrize(
+    "crs,contains",
+    (("epsg:27700", "6377563.396,299.324964"), ("epsg:4326", "6378137,298.257223563")),
+)
+def test_raster_map_set_crs(raster, crs, contains):
+    raster.set_crs(crs)
+    assert contains in raster._map.crs.wkt

@@ -31,3 +31,10 @@ def test_vector_map_property(vectormap):
 
 def test_vector_map_str(vectormap):
     assert vectormap.__str__() == vectormap.__repr__()
+
+
+@pytest.mark.parametrize("crs", ("epsg:27700", "epsg:4326"))
+def test_vector_map_set_crs(vectormap, crs):
+    vectormap.gdf.crs = None
+    vectormap.set_crs(crs)
+    assert vectormap.gdf.crs == crs

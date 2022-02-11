@@ -1,10 +1,19 @@
+from __future__ import annotations
+
+import tempfile
 from typing import Iterable, Iterator, List, Tuple, Union
 
 import numpy as np
 import rasterio as rio
 import rasterio.coords as riocoords
 import rasterio.transform as riotrans
+import rasterio.warp as riowarp
 
+from jsim.Types import (
+    LIST_AND_INDIVIDUAL_COORD,
+    LIST_AND_INDIVIDUAL_FLOAT,
+    LIST_AND_INDIVIDUAL_INT,
+)
 from jsim.Util.Map import Map
 
 
@@ -23,6 +32,14 @@ class RasterMap(Map):
     def shape(self) -> Tuple[int, int]:
         return self._nd_map.shape
 
+    @property
+    def width(self) -> int:
+        return self._map.width
+
+    @property
+    def height(self) -> int:
+        return self._map.height
+
     def read(self, *args, **kwargs) -> np.ndarray:
         return self._map.read(*args, **kwargs)
 
@@ -32,6 +49,37 @@ class RasterMap(Map):
             f"width={self._map.profile['width']}, "
             f"height={self._map.profile['height']})"
         )
+
+    def set_crs(self, crs: str) -> RasterMap:
+        super(RasterMap, self).set_crs(crs)
+        self_crs = self._map.crs
+        transform, width, height = riowarp.calculate_default_transform(
+            self_crs, crs, self.width, self.height, *self.bounds
+        )
+        kwargs = self._map.meta.copy()
+
+        kwargs.update(
+            {"crs": crs, "transform": transform, "width": width, "height": height}
+        )
+
+        _, w_path = tempfile.mkstemp(suffix=".tif")
+
+        with rio.open(w_path, "w", **kwargs) as dst:
+            for i in range(1, self._map.count + 1):
+                riowarp.reproject(
+                    source=rio.band(self._map, i),
+                    destination=rio.band(dst, i),
+                    src_transform=self._map.transform,
+                    src_crs=self._map.crs,
+                    dst_transform=transform,
+                    dst_crs=crs,
+                    resampling=riowarp.Resampling.nearest,
+                )
+
+        self._map.close()
+        self._map = rio.open(w_path)
+
+        return self
 
     def __str__(self):
         return self.__repr__()
@@ -70,6 +118,22 @@ class RasterMap(Map):
             col = [col]
 
         return riotrans.xy(trans, row, col)
+
+    def at(
+        self,
+        x: LIST_AND_INDIVIDUAL_INT = None,
+        y: LIST_AND_INDIVIDUAL_INT = None,
+        coord: LIST_AND_INDIVIDUAL_COORD = None,
+    ) -> LIST_AND_INDIVIDUAL_FLOAT:
+        pass
+
+    def _at_xy(
+        self, x: LIST_AND_INDIVIDUAL_INT, y: LIST_AND_INDIVIDUAL_INT
+    ) -> LIST_AND_INDIVIDUAL_INT:
+        pass
+
+    def _at_coord(self, coord: LIST_AND_INDIVIDUAL_COORD) -> LIST_AND_INDIVIDUAL_FLOAT:
+        pass
 
 
 if __name__ == "__main__":
