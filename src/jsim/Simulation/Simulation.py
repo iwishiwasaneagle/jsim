@@ -34,7 +34,7 @@ class Simulation(ABC):
         self.reset()
 
     @abstractmethod
-    def reset(self) -> None:
+    def reset(self) -> None:  # pragma: no cover
         """
         Forces the beginning of a new trial. Calls `self.pa.reset()` and
         `self.pe.reset()` to get the first action and state respectively.
@@ -49,7 +49,7 @@ class Simulation(ABC):
         pass
 
     @abstractmethod
-    def steps(self, num_steps: int) -> None:
+    def steps(self, num_steps: int) -> None:  # pragma: no cover
         """
         Runs the simulation for `num_steps` steps, starting from whatever state the
         environment is in. If the terminal state is reached, it should immediately
@@ -106,7 +106,7 @@ class Simulation(ABC):
 
     def collect_data(
         self, ps: State, pa: Action, pnext_s: State, reward: float
-    ) -> None:
+    ) -> None:  # pragma: no cover
         """
         This function is called once on each step of the simulation. The default method
         does nothing. This is where the user can gain access to the simulation's

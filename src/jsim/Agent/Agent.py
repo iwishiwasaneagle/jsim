@@ -56,7 +56,9 @@ class Agent(ABC):
         return self.policy(ps), self.state
 
     @abstractmethod
-    def step(self, ps: State, pa: Action, pnext_s: State, reward: float) -> Action:
+    def step(
+        self, ps: State, pa: Action, pnext_s: State, reward: float
+    ) -> Action:  # pragma: no cover
         """
         Must be provided by the user and will be called at each step of the
         simulation. This is the place where the learning should take place.
@@ -75,7 +77,7 @@ class Agent(ABC):
         pass
 
     @abstractmethod
-    def update(self, pa: Action) -> State:
+    def update(self, pa: Action) -> State:  # pragma: no cover
         """
         The function to handle the physical behavior of the agent.
 
@@ -90,7 +92,7 @@ class Agent(ABC):
         """
         pass
 
-    def learn(self) -> None:
+    def learn(self) -> None:  # pragma: no cover
         """
         The area for the agent to learn. This is called by the simulation at the end of
         every step/trial/whenever is suitable. Inputs are highly specific to the users
@@ -99,7 +101,7 @@ class Agent(ABC):
         pass
 
     @abstractmethod
-    def policy(self, pnext_s: State) -> Action:
+    def policy(self, pnext_s: State) -> Action:  # pragma: no cover
         """
         Must be provided by the user. This encodes the agents response to a given
         state and should be called from within `Agent::step`.

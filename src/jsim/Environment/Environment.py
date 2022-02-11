@@ -30,7 +30,7 @@ class Environment(ABC):
         pass
 
     @abstractmethod
-    def reset(self) -> State:
+    def reset(self) -> State:  # pragma: no cover
         """
         This function must be provided by the user for their specialized environment.
         Called at the beginning of a new trial and should perform any needed
@@ -42,7 +42,7 @@ class Environment(ABC):
         pass
 
     @abstractmethod
-    def step(self, pa: Action) -> Tuple[State, float]:
+    def step(self, pa: Action) -> Tuple[State, float]:  # pragma: no cover
         """
         Must be provided by the user for their specialized environment. Called once
         every simulation step and causes the environment to undergo a transition
