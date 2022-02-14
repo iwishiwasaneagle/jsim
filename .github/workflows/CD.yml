@@ -94,8 +94,8 @@ jobs:
           name: dist
           path: dist/
 
-  publish-github:
-    name: Publish on GitHub
+  publish:
+    name: Publish on GitHub and PyPi
     needs: [generate-changelog,build-python,setup-envs]
     runs-on: ubuntu-20.04
 
@@ -107,6 +107,7 @@ jobs:
         with:
           name: dist
           path: dist
+
       - name: Upload the release
         uses: svenstaro/upload-release-action@v2
         with:
@@ -116,6 +117,12 @@ jobs:
           file_glob: true
           release_name: "Release ${{needs.setup-envs.outputs.version}}"
           body: "${{ needs.generate-changelog.outputs.release_body }}"
+
+      - name: Publish a Python distribution to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
 
   publish-gh-page:
     name: Publish to Github Pages
