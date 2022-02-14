@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.22] - 2022-02-14
+
+### Bug Fixes
+
+- Different package name so it doesn't clash
+
 ## [0.0.21] - 2022-02-14
 
 ### Features
