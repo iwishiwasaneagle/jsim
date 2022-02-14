@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.21] - 2022-02-14
+
+### Features
+
+- Publish to pypi (#71)
+
 ## [0.0.20] - 2022-02-11
 
 ### Features
