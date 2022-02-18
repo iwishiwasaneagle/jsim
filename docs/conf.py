@@ -90,7 +90,9 @@ extensions = [
     "sphinx.ext.mathjax",
     "sphinx.ext.napoleon",
     "sphinx_rtd_theme",
-    "nbsphinx"
+    "nbsphinx",
+    "sphinxcontrib.autodoc_pydantic"
+    ""
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -333,3 +335,8 @@ intersphinx_mapping = {
 }
 
 print(f"loading configurations for {project} {version} ...", file=sys.stderr)
+
+# -- Sphinx autodoc ---------------------------------------------------------$
+
+autodoc_pydantic_model_show_json = False
+autodoc_pydantic_settings_show_json = False

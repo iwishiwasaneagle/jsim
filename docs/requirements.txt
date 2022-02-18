@@ -1,3 +1,4 @@
+autodoc_pydantic
 ipykernel
 IPython
 nbsphinx
