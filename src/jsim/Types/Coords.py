@@ -29,6 +29,15 @@ class Coords(pydantic.BaseModel):
         """
         return np.array([(f.x, f.y) for f in self.coords])
 
+    def append(self, item: Coord) -> None:
+        """
+        Add to the end of the coords list.
+
+        :param item: The item to append
+        :type item: Coord
+        """
+        self.coords.append(item)
+
     @property
     def distance(self) -> float:
         """

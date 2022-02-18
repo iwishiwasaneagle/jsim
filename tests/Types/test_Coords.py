@@ -1,5 +1,3 @@
-from typing import Iterator
-
 import numpy as np
 import pytest
 
@@ -7,7 +5,7 @@ from jsim.Types import Coord, Coords
 
 
 @pytest.fixture
-def coords(request) -> Iterator[Coords]:
+def coords(request) -> Coords:
     yield Coords(coords=[Coord(x=x, y=y) for x, y in zip(*request.param)])
 
 
@@ -82,3 +80,16 @@ def test_getitem(coords, expected_arr):
 )
 def test_len(coords, length):
     assert len(coords) == length
+
+
+@pytest.mark.parametrize(
+    "coords,append",
+    [
+        [((0, 0), (1, 1)), Coord(x=2, y=2)],
+        [((0, 0, 1), (0, 0, 0)), Coord(x=8, y=8)],
+    ],
+    indirect=["coords"],
+)
+def test_append(coords, append):
+    coords.append(append)
+    assert coords[-1] == append
