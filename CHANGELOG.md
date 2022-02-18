@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.23] - 2022-02-18
+
+### Documentation
+
+- Small changes to how docs are generated
+
+### Features
+
+- New Coords class (#74)
+
+### Miscellaneous Tasks
+
+- Use pypi package name
+- Add tqdm
+
 ## [0.0.22] - 2022-02-14
 
 ### Bug Fixes
