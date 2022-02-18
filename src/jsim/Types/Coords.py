@@ -3,7 +3,7 @@ from typing import List
 import numpy as np
 import pydantic
 
-from jsim.Types import Coord
+from jsim.Types.Coord import Coord
 
 
 class Coords(pydantic.BaseModel):
