@@ -8,7 +8,7 @@ implementation to `collect_data()`.
 from abc import ABC, abstractmethod
 
 from loguru import logger
-from tqdm import tqdm
+from tqdm.autonotebook import tqdm
 
 from jsim.Meta import Action, State
 
