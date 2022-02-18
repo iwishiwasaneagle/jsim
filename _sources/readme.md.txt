@@ -12,7 +12,7 @@ This simulation environment is built to accommodate my research into this topic 
 ## Installation
 
 ```bash
-pip install git+https://github.com/iwishiwasaneagle/jsim.git
+pip install jsim-utils
 ```
 
 ## Usage

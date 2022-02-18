@@ -10,6 +10,7 @@ Using this package
     Overview of this package.
 
 :doc:`Module reference <api/modules>`
+    API Reference
 
 :doc:`contributing`
     How to contribute changes to the theme.

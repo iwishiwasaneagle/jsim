@@ -17,6 +17,14 @@ jsim.Types.Coord module
    :undoc-members:
    :show-inheritance:
 
+jsim.Types.Coords module
+------------------------
+
+.. automodule:: jsim.Types.Coords
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 jsim.Types.List\_And\_Ind module
 --------------------------------
 
