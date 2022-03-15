@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.24] - 2022-03-15
+
+### Features
+
+- Numpy doesn't support 3.7 anymore
+
+### Miscellaneous Tasks
+
+- Bump pillow from 9.0.0 to 9.0.1 (#81)
+- Bump actions/setup-python from 2 to 3 (#79)
+
 ## [0.0.23] - 2022-02-18
 
 ### Documentation
