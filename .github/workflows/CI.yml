@@ -20,7 +20,7 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - uses: actions/cache@v2
+    - uses: actions/cache@v3
       id: cache-tox-tests
       with:
         path: .tox
@@ -49,7 +49,7 @@ jobs:
       with:
         python-version: "3.9"
 
-    - uses: actions/cache@v2
+    - uses: actions/cache@v3
       id: cache-tox-docs
       with:
         path: .tox
