@@ -146,7 +146,7 @@ jobs:
         run: tox -e docs
 
       - name: Upload the docs
-        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        uses: JamesIves/github-pages-deploy-action@v4.3.0
         with:
           branch: gh-pages
           folder: docs/_build/html/
