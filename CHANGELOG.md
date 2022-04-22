@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.25] - 2022-04-22
+
+### Bug Fixes
+
+- Update pre-commit hook versions
+- Remove requirements to work with upstream packages
+
+### Miscellaneous Tasks
+
+- Bump actions/cache from 2 to 3 (#82)
+- Bump actions/checkout from 2 to 3 (#78)
+- Bump platformdirs from 2.4.1 to 2.5.1 (#76)
+- Bump github-pages-deploy-action from 4.2.3 to 4.2.5 (#75)
+- Bump kiwisolver from 1.3.2 to 1.4.0 (#83)
+- Bump numpy from 1.21.4 to 1.22.3 (#80)
+- Bump typing-extensions from 4.0.1 to 4.1.1 (#72)
+- Bump filelock from 3.4.2 to 3.6.0 (#85)
+- Use iwishiwasaneagle/git-release instead
+
 ## [0.0.24] - 2022-03-15
 
 ### Features
