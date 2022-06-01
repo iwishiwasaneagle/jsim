@@ -15,6 +15,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
@@ -129,12 +130,12 @@
 }
 </style>
 <section id="module-jsim.Simulation">
-<span id="jsim-simulation-package"></span><h1>jsim.Simulation package<a class="headerlink" href="#module-jsim.Simulation" title="Permalink to this headline"></a></h1>
+<span id="jsim-simulation-package"></span><h1>jsim.Simulation package<a class="headerlink" href="#module-jsim.Simulation" title="Permalink to this heading"></a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
 <section id="module-jsim.Simulation.Simulation">
-<span id="jsim-simulation-simulation-module"></span><h2>jsim.Simulation.Simulation module<a class="headerlink" href="#module-jsim.Simulation.Simulation" title="Permalink to this headline"></a></h2>
+<span id="jsim-simulation-simulation-module"></span><h2>jsim.Simulation.Simulation module<a class="headerlink" href="#module-jsim.Simulation.Simulation" title="Permalink to this heading"></a></h2>
 <p>The base object of the interface. The Simulation handles the interaction between the
 agent and the environment.</p>
 <p>A simulation class is created by deriving from <cite>Simulation</cite> and providing the
@@ -142,12 +143,12 @@ implementation to <cite>collect_data()</cite>.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="jsim.Simulation.Simulation.Simulation">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">jsim.Simulation.Simulation.</span></span><span class="sig-name descname"><span class="pre">Simulation</span></span><a class="reference internal" href="../_modules/jsim/Simulation/Simulation.html#Simulation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#jsim.Simulation.Simulation.Simulation" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.9/library/abc.html#abc.ABC" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.9/library/abc.html#abc.ABC" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
 <p>Basic class of all simulations. An instance of the simulation is associated with an
 agent and an environment instances at the moment of creation.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="jsim.Simulation.Simulation.Simulation.collect_data">
-<span class="sig-name descname"><span class="pre">collect_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="jsim.Meta.html#jsim.Meta.State.State" title="jsim.Meta.State.State"><span class="pre">jsim.Meta.State.State</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="jsim.Meta.html#jsim.Meta.Action.Action" title="jsim.Meta.Action.Action"><span class="pre">jsim.Meta.Action.Action</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pnext_s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="jsim.Meta.html#jsim.Meta.State.State" title="jsim.Meta.State.State"><span class="pre">jsim.Meta.State.State</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.9/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/jsim/Simulation/Simulation.html#Simulation.collect_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#jsim.Simulation.Simulation.Simulation.collect_data" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">collect_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="jsim.Meta.html#jsim.Meta.State.State" title="jsim.Meta.State.State"><span class="pre">State</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="jsim.Meta.html#jsim.Meta.Action.Action" title="jsim.Meta.Action.Action"><span class="pre">Action</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pnext_s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="jsim.Meta.html#jsim.Meta.State.State" title="jsim.Meta.State.State"><span class="pre">State</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.9/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/jsim/Simulation/Simulation.html#Simulation.collect_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#jsim.Simulation.Simulation.Simulation.collect_data" title="Permalink to this definition"></a></dt>
 <dd><p>This function is called once on each step of the simulation. The default method
 does nothing. This is where the user can gain access to the simulation’s
 behaviour.</p>

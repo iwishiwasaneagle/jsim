@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.0] - 2022-06-01
+
+### Refactor
+
+- Let the upstream package do the dependency versions
+
 ## [0.0.25] - 2022-04-22
 
 ### Bug Fixes

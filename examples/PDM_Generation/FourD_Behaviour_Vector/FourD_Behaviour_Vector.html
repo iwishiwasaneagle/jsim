@@ -15,6 +15,7 @@
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
@@ -378,7 +379,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <section id="4D-Behavioural-Vector-PDM-Generation">
-<h1>4D Behavioural Vector PDM Generation<a class="headerlink" href="#4D-Behavioural-Vector-PDM-Generation" title="Permalink to this headline"></a></h1>
+<h1>4D Behavioural Vector PDM Generation<a class="headerlink" href="#4D-Behavioural-Vector-PDM-Generation" title="Permalink to this heading"></a></h1>
 <blockquote>
 <div><p>[1] B. G. Cangan, L. Heintzman, A. Hashimoto, N. Abaid, and R. K. Williams, ‘Anticipatory Human-Robot Path Planning for Search and Rescue’, arXiv:2009.03976 [cs], Sep. 2020, Accessed: Nov. 24, 2021. [Online]. Available: http://arxiv.org/abs/2009.03976</p>
 </div></blockquote>
@@ -425,7 +426,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <section id="Create-vectors">
-<h2>Create vectors<a class="headerlink" href="#Create-vectors" title="Permalink to this headline"></a></h2>
+<h2>Create vectors<a class="headerlink" href="#Create-vectors" title="Permalink to this heading"></a></h2>
 <p>Generate all possible 4D vectors with 0.1 increments Should be length 266 but is 258… is the paper wrong?</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -479,7 +480,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </section>
 <section id="Import-GeoTIFF-image-with-slope-data">
-<h2>Import GeoTIFF image with slope data<a class="headerlink" href="#Import-GeoTIFF-image-with-slope-data" title="Permalink to this headline"></a></h2>
+<h2>Import GeoTIFF image with slope data<a class="headerlink" href="#Import-GeoTIFF-image-with-slope-data" title="Permalink to this heading"></a></h2>
 <blockquote>
 <div><p>[4]: Lidar Composite Digital Terrain Model Scotland (Phase2) 1m resolution [ASC geospatial data], Scale 1:4000, Tiles: nr82ne,nr83se,nr92nw,nr92sw,nr93sw,nr91ne,nr92ne,nr92se,nr93se,ns02ne,ns02nw,ns02se,ns02sw,ns03se,ns03sw, Updated: 1 July 2014, Non-Commercial Government Licence, Using: EDINA LIDAR Digimap Service, <a class="reference external" href="https://digimap.edina.ac.uk">https://digimap.edina.ac.uk</a>, Downloaded: 2022-01-28 13:08:03.643</p>
 </div></blockquote>
@@ -521,7 +522,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </section>
 <section id="Canny-edge-detection">
-<h2>Canny edge detection<a class="headerlink" href="#Canny-edge-detection" title="Permalink to this headline"></a></h2>
+<h2>Canny edge detection<a class="headerlink" href="#Canny-edge-detection" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://scikit-image.org/docs/dev/auto_examples/edges/plot_canny.html">https://scikit-image.org/docs/dev/auto_examples/edges/plot_canny.html</a></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
@@ -567,7 +568,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </section>
 <section id="Run-simulation">
-<h2>Run simulation<a class="headerlink" href="#Run-simulation" title="Permalink to this headline"></a></h2>
+<h2>Run simulation<a class="headerlink" href="#Run-simulation" title="Permalink to this heading"></a></h2>
 <p>Code can be found <a class="reference external" href="https://github.com/iwishiwasaneagle/jsim/tree/master/examples/FourD_Behaviour_Vector/">here</a></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
@@ -716,7 +717,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </section>
 <section id="Use-agent-to-generate-PDM">
-<h2>Use agent to generate PDM<a class="headerlink" href="#Use-agent-to-generate-PDM" title="Permalink to this headline"></a></h2>
+<h2>Use agent to generate PDM<a class="headerlink" href="#Use-agent-to-generate-PDM" title="Permalink to this heading"></a></h2>
 <p>TODO: Select “best” agent. Pick one at random for now</p>
 <blockquote>
 <div><p>Simulations were run for the time it would take for a person to walk an hour with an average pace of 4 kilometers an hour and with a time step of 6 seconds, that is T = 600.</p>
